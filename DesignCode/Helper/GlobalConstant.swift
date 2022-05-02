@@ -32,6 +32,7 @@ struct GlobalConstant {
     
     struct Size {
         static let homeCard: CGSize = .init(width: 0, height: 350)
+        static let homeCardImage: CGSize = .init(width: 0, height: 230)
         static let homeCardLogo: CGSize = .init(width: 26, height: 26)
     }
     
@@ -40,5 +41,19 @@ struct GlobalConstant {
         static let logo2 = "Logo 2"
         static let logo3 = "Logo 3"
         static let logo4 = "Logo 4"
+    }
+    
+    struct Images {
+        static let blobOne: Image = Image("Blob 1")
+        static let illustration1: Image = Image("Illustration 1")
+        static let illustration2: Image = Image("Illustration 2")
+        static let illustration3: Image = Image("Illustration 3")
+        static let illustration4: Image = Image("Illustration 4")
+        static let illustration5: Image = Image("Illustration 5")
+        static let illustration6: Image = Image("Illustration 6")
+        static let illustration7: Image = Image("Illustration 7")
+        static let illustration8: Image = Image("Illustration 8")
+        static let illustration9: Image = Image("Illustration 9")
+        static let illustration10: Image = Image("Illustration 10")
     }
 }
