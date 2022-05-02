@@ -1,5 +1,5 @@
 //
-//  Color.swift
+//  ColorExtension.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 2.05.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//MARK: - Color
+//MARK: - ColorExtension
 
 extension Color {
     static let accentDefault = Color("AccentColor")
