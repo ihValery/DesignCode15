@@ -14,7 +14,8 @@ struct ContentView: View {
     //MARK: Internal Constant
     
     struct InternalConstant {
-        static let linearGradient = LinearGradient.init(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let gradientForText = LinearGradient.init(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let gradientForStroke = LinearGradient.init(colors: [.white.opacity(0.4), .black.opacity(0.5)], startPoint: .top, endPoint: .bottom)
         static let offsetBackground: CGSize = .init(width: 250, height: -100)
         static let offsetOverlay: CGSize = .init(width: 32, height: -80)
     }
@@ -31,10 +32,14 @@ struct ContentView: View {
                 .frame(width: GlobalConstant.Size.homeCardLogo.width,
                        height: GlobalConstant.Size.homeCardLogo.height)
                 .cornerRadius(GlobalConstant.Corner.logo)
+                .padding(GlobalConstant.Padding.step9)
+                .background(.ultraThinMaterial,
+                            in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.logo, style: .continuous)
+                )
             
             DefaultTextView(GlobalConstant.Text.homeCardTitle,
                             font: .largeTitle, weight: .bold)
-            .foregroundStyle(InternalConstant.linearGradient)
+            .foregroundStyle(InternalConstant.gradientForText)
             
             DefaultTextView(GlobalConstant.Text.homeCardSubtitle.uppercased(),
                             font: .footnote, weight: .semibold)
@@ -48,9 +53,18 @@ struct ContentView: View {
         .padding(GlobalConstant.Padding.stepDefault)
         .padding(.vertical, GlobalConstant.Padding.stepDefault)
         .frame(height: GlobalConstant.Size.homeCard.height)
-        .background(.ultraThinMaterial)
-        .cornerRadius(GlobalConstant.Corner.card)
+        .background(.ultraThinMaterial,
+                    in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
+//        .mask(
+//            RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
+//                             style: .continuous)
+//        )
         .defaultShadow()
+        .overlay(
+            RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
+                .stroke(InternalConstant.gradientForStroke)
+                .blendMode(.overlay)
+        )
         .padding(.horizontal, GlobalConstant.Padding.stepDefault)
         .background(
             GlobalConstant.Images.blobOne
