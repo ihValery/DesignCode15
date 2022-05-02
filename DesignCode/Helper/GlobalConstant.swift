@@ -20,6 +20,7 @@ struct GlobalConstant {
     
     struct Padding {
         static let step8: CGFloat = 8
+        static let step9: CGFloat = 9
         ///20
         static let stepDefault: CGFloat = 20
     }
