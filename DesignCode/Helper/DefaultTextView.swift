@@ -21,8 +21,6 @@ struct DefaultTextView: View {
     
     private let lineLimit: Int
     
-    //MARK: Body
-    
     var body: some View {
         Text(text)
             .font(font)

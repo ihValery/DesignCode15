@@ -15,12 +15,11 @@ struct ContentView: View {
     
     struct InternalConstant {
         static let gradientForText = LinearGradient.init(colors: [.primary, .primary.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing)
-        static let gradientForStroke = LinearGradient.init(colors: [.white.opacity(0.4), .black.opacity(0.5)], startPoint: .top, endPoint: .bottom)
         static let offsetBackground: CGSize = .init(width: 250, height: -100)
         static let offsetOverlay: CGSize = .init(width: 32, height: -80)
     }
 
-    //MARK: Body
+    //MARK: Properties
 
     var body: some View {
         VStack(alignment: .leading, spacing: GlobalConstant.Padding.step8) {
@@ -34,8 +33,9 @@ struct ContentView: View {
                 .cornerRadius(GlobalConstant.Corner.logo)
                 .padding(GlobalConstant.Padding.step9)
                 .background(.ultraThinMaterial,
-                            in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.logo, style: .continuous)
+                            in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.logoBackground, style: .continuous)
                 )
+                .defaultStroke(GlobalConstant.Corner.logoBackground)
             
             DefaultTextView(GlobalConstant.Text.homeCardTitle,
                             font: .largeTitle, weight: .bold)
@@ -60,11 +60,7 @@ struct ContentView: View {
 //                             style: .continuous)
 //        )
         .defaultShadow()
-        .overlay(
-            RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
-                .stroke(InternalConstant.gradientForStroke)
-                .blendMode(.overlay)
-        )
+        .defaultStroke()
         .padding(.horizontal, GlobalConstant.Padding.stepDefault)
         .background(
             GlobalConstant.Images.blobOne

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80022D002820954200FB72B1 /* ShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80022CFF2820954200FB72B1 /* ShadowModifier.swift */; };
+		80022D0228212F3F00FB72B1 /* StylesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80022D0128212F3F00FB72B1 /* StylesModifier.swift */; };
 		80641F6D28203AC300F4CB24 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80641F6C28203AC300F4CB24 /* ColorExtension.swift */; };
+		80892C6228214E6E00204DC4 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892C6128214E6E00204DC4 /* AccountView.swift */; };
+		80892C642821885E00204DC4 /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892C632821885E00204DC4 /* HexagonView.swift */; };
 		80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B198452820222400CA57EA /* DesignCodeApp.swift */; };
 		80B198482820222400CA57EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B198472820222400CA57EA /* ContentView.swift */; };
 		80B1984A2820222500CA57EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B198492820222500CA57EA /* Assets.xcassets */; };
@@ -18,8 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		80022CFF2820954200FB72B1 /* ShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowModifier.swift; sourceTree = "<group>"; };
+		80022D0128212F3F00FB72B1 /* StylesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesModifier.swift; sourceTree = "<group>"; };
 		80641F6C28203AC300F4CB24 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		80892C6128214E6E00204DC4 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		80892C632821885E00204DC4 /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
 		80B198422820222400CA57EA /* Design Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Design Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B198452820222400CA57EA /* DesignCodeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeApp.swift; sourceTree = "<group>"; };
 		80B198472820222400CA57EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 			children = (
 				80B198452820222400CA57EA /* DesignCodeApp.swift */,
 				80B198472820222400CA57EA /* ContentView.swift */,
+				80892C6128214E6E00204DC4 /* AccountView.swift */,
+				80892C632821885E00204DC4 /* HexagonView.swift */,
 				80B5E0BB28203CDA000B381D /* Helper */,
 				80B198492820222500CA57EA /* Assets.xcassets */,
 				80B1984B2820222500CA57EA /* Preview Content */,
@@ -82,7 +88,7 @@
 				80B5E0BC28203E61000B381D /* GlobalConstant.swift */,
 				80B5E0BE28204255000B381D /* DefaultTextView.swift */,
 				80641F6C28203AC300F4CB24 /* ColorExtension.swift */,
-				80022CFF2820954200FB72B1 /* ShadowModifier.swift */,
+				80022D0128212F3F00FB72B1 /* StylesModifier.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -158,9 +164,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				80B198482820222400CA57EA /* ContentView.swift in Sources */,
+				80892C642821885E00204DC4 /* HexagonView.swift in Sources */,
+				80022D0228212F3F00FB72B1 /* StylesModifier.swift in Sources */,
 				80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */,
 				80B5E0BD28203E61000B381D /* GlobalConstant.swift in Sources */,
-				80022D002820954200FB72B1 /* ShadowModifier.swift in Sources */,
+				80892C6228214E6E00204DC4 /* AccountView.swift in Sources */,
 				80641F6D28203AC300F4CB24 /* ColorExtension.swift in Sources */,
 				80B5E0BF28204255000B381D /* DefaultTextView.swift in Sources */,
 			);
