@@ -14,8 +14,10 @@ struct GlobalConstant {
     struct Corner {
         ///30
         static let card: CGFloat = 30
-        ///20
-        static let logo: CGFloat = 20
+        ///10
+        static let logo: CGFloat = 10
+        ///16
+        static let logoBackground: CGFloat = 16
     }
     
     struct Padding {
@@ -56,5 +58,22 @@ struct GlobalConstant {
         static let illustration8: Image = Image("Illustration 8")
         static let illustration9: Image = Image("Illustration 9")
         static let illustration10: Image = Image("Illustration 10")
+    }
+    
+    struct Account {
+        static let navigationTitle = "Account"
+        static let name = "ihValery"
+        static let location = "Minsk"
+        static let sectionSettings: Label = .init("Settings", systemImage: "gear")
+        static let sectionBilling: Label = .init("Billing", systemImage: "creditcard")
+        static let sectionHelp: Label = .init("Help", systemImage: "questionmark")
+        static let sectionWebsite: Label = .init("Website", systemImage: "house")
+        static let sectionYoutube: Label = .init("YouTube", systemImage: "tv")
+        static let systemImagePerson = Image(systemName: "person.crop.circle.fill.badge.checkmark")
+        static let systemImageLocation = Image(systemName: "location")
+        static let systemImageHexagon = Image(systemName: "hexagon.fill")
+        static let systemImageLink = Image(systemName: "link")
+        static let linkWebsite: URL = .init(string: "https://www.apple.com")!
+        static let linkYoutube: URL = .init(string: "https://www.youtube.com")!
     }
 }
