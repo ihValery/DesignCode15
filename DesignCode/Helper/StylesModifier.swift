@@ -30,9 +30,7 @@ struct StrokeModifier: ViewModifier {
                        .black.opacity(colorScheme == .dark ? 0.3 : 0.1)],
               startPoint: .top, endPoint: .bottom)
     }
-
-    //MARK: Body
-
+    
     func body(content: Content) -> some View {
         content.overlay(
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)

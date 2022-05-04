@@ -18,11 +18,16 @@ struct GlobalConstant {
         static let logo: CGFloat = 10
         ///16
         static let logoBackground: CGFloat = 16
+        ///34
+        static let tabBar: CGFloat = 34
+        static let tabBarDash: CGFloat = 3
     }
     
     struct Padding {
+        static let step6: CGFloat = 6
         static let step8: CGFloat = 8
         static let step9: CGFloat = 9
+        static let step14: CGFloat = 14
         ///20
         static let stepDefault: CGFloat = 20
     }
@@ -37,6 +42,21 @@ struct GlobalConstant {
         static let homeCard: CGSize = .init(width: 0, height: 350)
         static let homeCardImage: CGSize = .init(width: 0, height: 230)
         static let homeCardLogo: CGSize = .init(width: 26, height: 26)
+        static let tabBar: CGSize = .init(width: 0, height: 88)
+        static let tabBarIcon: CGSize = .init(width: 44, height: 29)
+        static let tabBarCircle: CGSize = .init(width: 88, height: 88)
+        static let tabBarDash: CGSize = .init(width: 28, height: 5)
+    }
+    
+    struct TabBar {
+        static let textHome = "Learn Now"
+        static let textExplore = "Explore"
+        static let textNotification = "Notification"
+        static let textLibrary = "Library"
+        static let iconHome = "house"
+        static let iconExplore = "magnifyingglass"
+        static let iconNotification = "bell"
+        static let iconLibrary = "rectangle.stack"
     }
     
     struct Logos {

@@ -73,6 +73,12 @@ struct ContentView: View {
                 .frame(height: GlobalConstant.Size.homeCardImage.height)
                 .offset(InternalConstant.offsetOverlay)
         )
+        .onAppear {
+            print("Hello ContentView")
+        }
+        .onDisappear {
+            print("Bye ContentView")
+        }
     }
 }
 
