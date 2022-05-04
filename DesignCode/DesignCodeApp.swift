@@ -11,8 +11,8 @@ import SwiftUI
 struct DesignCodeApp: App {
     var body: some Scene {
         WindowGroup {
-            AccountView()
 //            ContentView()
+            TabBarView()
         }
     }
 }

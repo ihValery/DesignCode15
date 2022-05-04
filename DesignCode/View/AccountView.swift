@@ -15,6 +15,7 @@ struct AccountView: View {
     
     struct InternalConstant {
         static let offsetHexagon: CGSize = .init(width: -50, height: -100)
+        static let offsetBlob: CGSize = .init(width: 200, height: 0)
         static let sizeFontHexagon: Font = .system(size: 200)
         static let sizeFontPerson: Font = .system(size: 32)
     }
@@ -22,20 +23,21 @@ struct AccountView: View {
     //MARK: Properties
 
     var body: some View {
-        NavigationView {
-            List {
-                profile
-                
-                menu
-                
-                links
-            }
-            .listStyle(.insetGrouped)
-            .navigationTitle(GlobalConstant.Account.navigationTitle)
-        }
+//        NavigationView {
+            Text("1231")
+//            List {
+////                profile
+//
+////                menu
+//
+////                links
+//            }
+//            .listStyle(.insetGrouped)
+//            .navigationTitle(GlobalConstant.Account.navigationTitle)
+//        }
     }
     
-    var profile: some View {
+    private var profile: some View {
         VStack(spacing: GlobalConstant.Padding.step8) {
             GlobalConstant.Account.systemImagePerson
                 .font(InternalConstant.sizeFontPerson)
@@ -47,6 +49,11 @@ struct AccountView: View {
                         .foregroundColor(.blue)
                         .font(InternalConstant.sizeFontHexagon)
                         .offset(InternalConstant.offsetHexagon)
+                )
+                .background(
+                    BlobView()
+                        .offset(InternalConstant.offsetBlob)
+                        .scaleEffect(0.6)
                 )
             
             Text(GlobalConstant.Account.name)
@@ -62,7 +69,7 @@ struct AccountView: View {
         .padding()
     }
     
-    var menu: some View {
+    private var menu: some View {
         Section {
             NavigationLink {
                 EmptyView()
@@ -86,7 +93,7 @@ struct AccountView: View {
         .listRowSeparator(.hidden)
     }
     
-    var links: some View {
+    private var links: some View {
         Section {
             Link(destination: GlobalConstant.Account.linkWebsite) {
                 HStack {
