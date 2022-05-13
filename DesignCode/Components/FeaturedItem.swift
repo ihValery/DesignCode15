@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  FeaturedItem.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 13.05.22.
@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct HomeView: View {
+//MARK: - FeaturedItem
+
+struct FeaturedItem: View {
     
     //MARK: Internal Constant
     
@@ -35,15 +37,15 @@ struct HomeView: View {
                 )
                 .defaultStroke(GlobalConstant.Corner.logoBackground)
             
-            DefaultTextView(GlobalConstant.Text.homeCardTitle,
+            DefaultText(GlobalConstant.Text.homeCardTitle,
                             font: .largeTitle, weight: .bold)
             .foregroundStyle(InternalConstant.gradientForText)
             
-            DefaultTextView(GlobalConstant.Text.homeCardSubtitle.uppercased(),
+            DefaultText(GlobalConstant.Text.homeCardSubtitle.uppercased(),
                             font: .footnote, weight: .semibold)
             .foregroundStyle(.secondary)
             
-            DefaultTextView(GlobalConstant.Text.homeCardDescription,
+            DefaultText(GlobalConstant.Text.homeCardDescription,
                             font: .footnote, weight: .semibold, lineLimit: 2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.secondary)
@@ -80,14 +82,14 @@ struct HomeView: View {
 
 //MARK: - PreviewProvider
 
-struct HomeView_Previews: PreviewProvider {
+struct FeaturedItem_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeView()
+            FeaturedItem()
                 .previewLayout(.sizeThatFits)
                 .preferredColorScheme(.dark)
             
-            HomeView()
+            FeaturedItem()
                 .previewLayout(.sizeThatFits)
         }
         .padding(.vertical, 20)
