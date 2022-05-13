@@ -35,13 +35,7 @@ struct GlobalConstant {
         ///20
         static let stepDefault: CGFloat = 20
     }
-    
-    struct Text {
-        static let homeCardTitle = "SwiftUI for iOS 15"
-        static let homeCardSubtitle = "20 sections - 3 hours"
-        static let homeCardDescription = "Build an iOS app for iOS 15 with custom layouts, animations and ..."
-    }
-    
+        
     struct Size {
         static let homeCard: CGSize = .init(width: 0, height: 350)
         static let homeCardImage: CGSize = .init(width: 0, height: 230)

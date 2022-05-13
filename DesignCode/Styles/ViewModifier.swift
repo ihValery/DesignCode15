@@ -26,7 +26,7 @@ struct StrokeModifier: ViewModifier {
     private let cornerRadius: CGFloat
     
     private var gradient: LinearGradient {
-        .init(colors: [.white.opacity(colorScheme == .dark ? 0.6 : 0.3),
+        .init(colors: [.white.opacity(colorScheme == .dark ? 0.1 : 0.3),
                        .black.opacity(colorScheme == .dark ? 0.3 : 0.1)],
               startPoint: .top, endPoint: .bottom)
     }
@@ -43,17 +43,5 @@ struct StrokeModifier: ViewModifier {
     
     init(_ cornerRadius: CGFloat) {
         self.cornerRadius = cornerRadius
-    }
-}
-
-//MARK: - Extension
-
-extension View {
-    func defaultShadow() -> some View {
-        modifier(ShadowModifier())
-    }
-    
-    func defaultStroke(_ cornerRadius: CGFloat = GlobalConstant.Corner.card) -> some View {
-        modifier(StrokeModifier(cornerRadius))
     }
 }

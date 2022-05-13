@@ -16,6 +16,8 @@ enum TabBarModel: String {
     case notification
     case library
     
+    //MARK: Properties
+
     var text: String {
         switch self {
         case .home: return GlobalConstant.TabBar.textHome

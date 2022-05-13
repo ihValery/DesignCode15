@@ -42,7 +42,7 @@ struct DefaultText: View {
 
 struct DefaultTextView_Previews: PreviewProvider {
     static var previews: some View {
-        DefaultText(GlobalConstant.Text.homeCardTitle,
+        DefaultText("SwiftUI iOS 15",
                         font: .largeTitle, weight: .bold)
     }
 }
