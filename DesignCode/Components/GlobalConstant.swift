@@ -46,6 +46,7 @@ struct GlobalConstant {
         static let tabBarIcon: CGSize = .init(width: 44, height: 29)
         static let tabBarCircle: CGSize = .init(width: 88, height: 88)
         static let tabBarDash: CGSize = .init(width: 28, height: 5)
+        static let navigationBar: CGSize = .init(width: 0, height: 70)
     }
     
     struct TabBar {
@@ -95,5 +96,9 @@ struct GlobalConstant {
         static let systemImageLink = Image(systemName: "link")
         static let linkWebsite: URL = .init(string: "https://www.apple.com")!
         static let linkYoutube: URL = .init(string: "https://www.youtube.com")!
+    }
+    
+    struct NavigationBar {
+        static let title = "Featured"
     }
 }

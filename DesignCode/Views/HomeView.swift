@@ -9,8 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     
+    //MARK: Properties
+    
     var body: some View {
-        Text("dsd")
+        ScrollView(.vertical, showsIndicators: false) {
+            FeaturedItem()
+        }
+        .overlay(NavigationBar(GlobalConstant.NavigationBar.title), alignment: .top)
     }
 }
 
