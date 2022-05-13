@@ -9,7 +9,7 @@ import SwiftUI
 
 //MARK: - TabBarModel
 
-enum TabBarModel {
+enum TabBarModel: String {
     
     case home
     case explore
@@ -41,5 +41,15 @@ enum TabBarModel {
         case .notification: return .red
         case .library: return .pink
         }
+    }
+}
+
+//MARK: - TabPreferenceKey
+
+struct TabPreferenceKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
     }
 }
