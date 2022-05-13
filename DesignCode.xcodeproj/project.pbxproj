@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		80022D0228212F3F00FB72B1 /* ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80022D0128212F3F00FB72B1 /* ViewModifier.swift */; };
+		80124C87282EC7400014D56A /* PreferenceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C86282EC7400014D56A /* PreferenceKeys.swift */; };
 		802A3F46282E84D40028B7D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A3F45282E84D40028B7D7 /* HomeView.swift */; };
 		806405C5282EA44300CEB982 /* FeaturedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C4282EA44300CEB982 /* FeaturedItem.swift */; };
 		806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C6282EA80F00CEB982 /* NavigationBar.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		80022D0128212F3F00FB72B1 /* ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifier.swift; sourceTree = "<group>"; };
+		80124C86282EC7400014D56A /* PreferenceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceKeys.swift; sourceTree = "<group>"; };
 		802A3F45282E84D40028B7D7 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		806405C4282EA44300CEB982 /* FeaturedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedItem.swift; sourceTree = "<group>"; };
 		806405C6282EA80F00CEB982 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -88,7 +90,9 @@
 		80892C672822A28300204DC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80B5E0BC28203E61000B381D /* GlobalConstant.swift */,
 				80892C682822A2A700204DC4 /* TabBarModel.swift */,
+				80124C86282EC7400014D56A /* PreferenceKeys.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,7 +158,6 @@
 		80B5E0BB28203CDA000B381D /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				80B5E0BC28203E61000B381D /* GlobalConstant.swift */,
 				80892C65282196FC00204DC4 /* BlobView.swift */,
 				80B5E0BE28204255000B381D /* DefaultText.swift */,
 				806405C4282EA44300CEB982 /* FeaturedItem.swift */,
@@ -236,6 +239,7 @@
 				802A3F46282E84D40028B7D7 /* HomeView.swift in Sources */,
 				80022D0228212F3F00FB72B1 /* ViewModifier.swift in Sources */,
 				80892C66282196FC00204DC4 /* BlobView.swift in Sources */,
+				80124C87282EC7400014D56A /* PreferenceKeys.swift in Sources */,
 				806405C5282EA44300CEB982 /* FeaturedItem.swift in Sources */,
 				806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */,
 				80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */,

@@ -11,19 +11,7 @@ import SwiftUI
 
 struct NavigationBar: View {
     
-    //MARK: Internal Constant
-    
-    struct InternalConstant {
-        static let offsetForBlur: CGFloat = 13
-    }
-    
     //MARK: Properties
-    
-    private var heightNavigationBar: CGFloat {
-        GlobalConstant.Size.navigationBar.height
-        + getSafeArea().top
-        + InternalConstant.offsetForBlur
-    }
     
     private let title: String
     
@@ -43,11 +31,8 @@ struct NavigationBar: View {
                 avatar
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .padding(.bottom)
-            .frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .offset(y: -InternalConstant.offsetForBlur)
-        .frame(height: heightNavigationBar)
+        .frame(height: GlobalConstant.Size.navigationBar.height)
     }
     
     var magnifyingglass: some View {
@@ -75,7 +60,6 @@ struct NavigationBar: View {
             .defaultStroke(GlobalConstant.Corner.buttonAvatar)
     }
 
-    
     //MARK: Initializer
     
     init(_ title: String) {
@@ -87,6 +71,7 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(GlobalConstant.NavigationBar.title).background(.cyan)
+        NavigationBar(GlobalConstant.NavigationBar.title)
+            .background(.cyan)
     }
 }
