@@ -11,19 +11,9 @@ import SwiftUI
 
 struct NavigationBar: View {
     
-    //MARK: Internal Constant
-    
-    struct InternalConstant {
-        static let offsetForBlur: CGFloat = 13
-    }
-    
     //MARK: Properties
     
-    private var heightNavigationBar: CGFloat {
-        GlobalConstant.Size.navigationBar.height
-        + getSafeArea().top
-        + InternalConstant.offsetForBlur
-    }
+    @Binding var hasScroll: Bool
     
     private let title: String
     
@@ -32,9 +22,13 @@ struct NavigationBar: View {
             Color.clear
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
+                .opacity(hasScroll ? 1 : 0)
             
             HStack(spacing: 16) {
-                DefaultText(title, font: .largeTitle, weight: .bold)
+//                DefaultText(title, font: .largeTitle, weight: .bold)
+                Text(title)
+                    .bold()
+                    .animatableFont(hasScroll ? 22 : 34)
                 
                 Spacer()
                 
@@ -43,11 +37,9 @@ struct NavigationBar: View {
                 avatar
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .padding(.bottom)
-            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.top, hasScroll ? 0 : GlobalConstant.Padding.stepDefault)
         }
-        .offset(y: -InternalConstant.offsetForBlur)
-        .frame(height: heightNavigationBar)
+        .frame(height: hasScroll ? 44 : GlobalConstant.Size.navigationBar.height)
     }
     
     var magnifyingglass: some View {
@@ -75,11 +67,11 @@ struct NavigationBar: View {
             .defaultStroke(GlobalConstant.Corner.buttonAvatar)
     }
 
-    
     //MARK: Initializer
     
-    init(_ title: String) {
+    init(_ title: String,_ hasScroll: Binding<Bool>) {
         self.title = title
+        self._hasScroll = hasScroll
     }
 }
 
@@ -87,6 +79,7 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(GlobalConstant.NavigationBar.title).background(.cyan)
+        NavigationBar(GlobalConstant.NavigationBar.title, .constant(false))
+            .background(.cyan)
     }
 }

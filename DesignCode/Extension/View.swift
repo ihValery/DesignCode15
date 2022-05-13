@@ -21,6 +21,20 @@ extension View {
     }
 }
 
+extension View {
+    func defaultShadow() -> some View {
+        modifier(ShadowModifier())
+    }
+    
+    func defaultStroke(_ cornerRadius: CGFloat = GlobalConstant.Corner.card) -> some View {
+        modifier(StrokeModifier(cornerRadius))
+    }
+    
+    func animatableFont(_ size: Double) -> some View {
+        modifier(AnimatableFontModifier(size: size))
+    }
+}
+
 //extension View {
 //    func getScreenSize() -> CGSize {
 //        UIScreen.main.bounds.size

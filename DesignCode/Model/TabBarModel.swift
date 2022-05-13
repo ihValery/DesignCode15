@@ -16,6 +16,8 @@ enum TabBarModel: String {
     case notification
     case library
     
+    //MARK: Properties
+
     var text: String {
         switch self {
         case .home: return GlobalConstant.TabBar.textHome
@@ -41,15 +43,5 @@ enum TabBarModel: String {
         case .notification: return .red
         case .library: return .pink
         }
-    }
-}
-
-//MARK: - TabPreferenceKey
-
-struct TabPreferenceKey: PreferenceKey {
-    static var defaultValue: CGFloat = 0
-    
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
-        value = nextValue()
     }
 }

@@ -9,19 +9,66 @@ import SwiftUI
 
 struct HomeView: View {
     
+    //MARK: Internal Constant
+    
+    struct InternalConstant {
+        static let coordinateSpace = "scroll"
+        static let offsetBackgroundFeatureItem: CGSize = .init(width: 250, height: -100)
+    }
+    
     //MARK: Properties
     
+    @ObservedObject private var courseViewModel = CourseVM()
+    
+    @State private var hasScroll: Bool = false
+    
     var body: some View {
-        ScrollView(.vertical, showsIndicators: true) {
-            FeaturedItem()
+        ZStack {
+            Color.backgroundDefault.ignoresSafeArea()
             
-            Color.red
-                .frame(height: 1000)
+            ScrollView(.vertical, showsIndicators: true) {
+                scrollDetection
+                
+                featuredCourses
+            }
+            .coordinateSpace(name: InternalConstant.coordinateSpace)
+            
+            .safeAreaInset(edge: .top, content: {
+                Color.clear.frame(height: 70)
+            })
+            .overlay(NavigationBar(GlobalConstant.NavigationBar.title, $hasScroll), alignment: .top)
         }
-        .safeAreaInset(edge: .top, content: {
-            NavigationBar(GlobalConstant.NavigationBar.title)
+    }
+    
+    var scrollDetection: some View {
+        GeometryReader { geometry in
+            let minY = geometry.frame(in: .named(InternalConstant.coordinateSpace)).minY
+            Color.clear
+                .preference(key: ScrollPreferenceKey.self, value: minY)
+        }
+        .frame(height: 0)
+        .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
+            withAnimation(.easeInOut(duration: 0.2)) {
+                hasScroll = value < 0 ? true : false
+            }
         })
-        .ignoresSafeArea()
+    }
+    
+    var featuredCourses: some View {
+        TabView {
+            ForEach(courseViewModel.featuredItems) { course in
+                GeometryReader { geometry in
+                    FeaturedCourse(course, geometryMinX: geometry.frame(in: .global).minX)
+                        .padding(.vertical, 40)
+                }
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(height: GlobalConstant.Size.homeCard.height + 80)
+        .background(
+            GlobalConstant.Images.blobOne
+                .offset(InternalConstant.offsetBackgroundFeatureItem)
+        )
     }
 }
 

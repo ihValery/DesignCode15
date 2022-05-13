@@ -35,6 +35,8 @@ struct TabBarView: View {
                              style: .continuous)
         )
         .defaultStroke(GlobalConstant.Corner.tabBar)
+        .frame(maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea()
     }
     
     private var indicatorCircleTabBar: some View {
@@ -99,8 +101,8 @@ fileprivate struct OneTabView: View {
                 }
                 .padding(.top, GlobalConstant.Padding.step14)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                .preference(key: TabPreferenceKey.self, value: geometry.size.width)
-                .onPreferenceChange(TabPreferenceKey.self, perform: { value in
+                .preference(key: TabBarPreferenceKey.self, value: geometry.size.width)
+                .onPreferenceChange(TabBarPreferenceKey.self, perform: { value in
                     widthTab = value
                 })
             }

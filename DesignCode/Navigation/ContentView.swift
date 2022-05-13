@@ -30,10 +30,10 @@ struct ContentView: View {
                     .ignoresSafeArea()
             }
         }
+        .overlay(TabBarView($selectTab), alignment: .bottom)
         .safeAreaInset(edge: .bottom) {
-            TabBarView($selectTab)
+            Color.clear.frame(height: GlobalConstant.Size.tabBar.height / 2)
         }
-        .ignoresSafeArea()
     }
 }
 
