@@ -11,9 +11,21 @@ import SwiftUI
 
 struct NavigationBar: View {
     
+    //MARK: Internal Constant
+    
+    struct InternalConstant {
+        static let offsetForBlur: CGFloat = 13
+    }
+    
     //MARK: Properties
     
-    private var title: String = ""
+    private var heightNavigationBar: CGFloat {
+        GlobalConstant.Size.navigationBar.height
+        + getSafeArea().top
+        + InternalConstant.offsetForBlur
+    }
+    
+    private let title: String
     
     var body: some View {
         ZStack {
@@ -21,12 +33,48 @@ struct NavigationBar: View {
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
             
-            DefaultText(title, font: .largeTitle, weight: .bold)
-                .padding(.leading, GlobalConstant.Padding.stepDefault)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(spacing: 16) {
+                DefaultText(title, font: .largeTitle, weight: .bold)
+                
+                Spacer()
+                
+                magnifyingglass
+                
+                avatar
+            }
+            .padding(.horizontal, GlobalConstant.Padding.stepDefault)
+            .padding(.bottom)
+            .frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .frame(height: GlobalConstant.Size.navigationBar.height)
+        .offset(y: -InternalConstant.offsetForBlur)
+        .frame(height: heightNavigationBar)
     }
+    
+    var magnifyingglass: some View {
+        Image(systemName: GlobalConstant.NavigationBar.magnifyingglass)
+            .font(.body.bold())
+            .frame(width: GlobalConstant.Size.buttonMagnifyingglass.width,
+                   height: GlobalConstant.Size.buttonMagnifyingglass.height)
+            .foregroundColor(.secondary)
+            .background(.ultraThinMaterial,
+                        in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonMagnifyingglass,
+                                             style: .continuous))
+            .defaultStroke(GlobalConstant.Corner.buttonMagnifyingglass)
+    }
+    
+    var avatar: some View {
+        Image(GlobalConstant.Avatar.avatarDefault)
+            .resizable()
+            .frame(width: GlobalConstant.Size.buttonAvatar.width,
+                   height: GlobalConstant.Size.buttonAvatar.height)
+            .cornerRadius(GlobalConstant.Corner.logo)
+            .padding(GlobalConstant.Padding.step8)
+            .background(.ultraThinMaterial,
+                        in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonAvatar,
+                                             style: .continuous))
+            .defaultStroke(GlobalConstant.Corner.buttonAvatar)
+    }
+
     
     //MARK: Initializer
     
@@ -39,6 +87,6 @@ struct NavigationBar: View {
 
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationBar(GlobalConstant.NavigationBar.title)
+        NavigationBar(GlobalConstant.NavigationBar.title).background(.cyan)
     }
 }

@@ -35,8 +35,6 @@ struct TabBarView: View {
                              style: .continuous)
         )
         .defaultStroke(GlobalConstant.Corner.tabBar)
-        .frame(maxHeight: .infinity, alignment: .bottom)
-        .ignoresSafeArea()
     }
     
     private var indicatorCircleTabBar: some View {

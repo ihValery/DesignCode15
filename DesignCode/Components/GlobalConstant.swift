@@ -18,6 +18,10 @@ struct GlobalConstant {
         static let logo: CGFloat = 10
         ///16
         static let logoBackground: CGFloat = 16
+        ///14
+        static let buttonMagnifyingglass: CGFloat = 14
+        ///16
+        static let buttonAvatar: CGFloat = 16
         ///34
         static let tabBar: CGFloat = 34
         static let tabBarDash: CGFloat = 3
@@ -47,6 +51,8 @@ struct GlobalConstant {
         static let tabBarCircle: CGSize = .init(width: 88, height: 88)
         static let tabBarDash: CGSize = .init(width: 28, height: 5)
         static let navigationBar: CGSize = .init(width: 0, height: 70)
+        static let buttonMagnifyingglass: CGSize = .init(width: 36, height: 36)
+        static let buttonAvatar: CGSize = .init(width: 26, height: 26)
     }
     
     struct TabBar {
@@ -81,6 +87,13 @@ struct GlobalConstant {
         static let illustration10: Image = Image("Illustration 10")
     }
     
+    struct Avatar {
+        static let avatarOne = "Avatar 1"
+        static let avatarTwo = "Avatar 2"
+        static let avatarThree = "Avatar 3"
+        static let avatarDefault = "Avatar Default"
+    }
+    
     struct Account {
         static let navigationTitle = "Account"
         static let name = "ihValery"
@@ -100,5 +113,6 @@ struct GlobalConstant {
     
     struct NavigationBar {
         static let title = "Featured"
+        static let magnifyingglass = "magnifyingglass"
     }
 }
