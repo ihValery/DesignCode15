@@ -12,10 +12,16 @@ struct HomeView: View {
     //MARK: Properties
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: true) {
             FeaturedItem()
+            
+            Color.red
+                .frame(height: 1000)
         }
-        .overlay(NavigationBar(GlobalConstant.NavigationBar.title), alignment: .top)
+        .safeAreaInset(edge: .top, content: {
+            NavigationBar(GlobalConstant.NavigationBar.title)
+        })
+        .ignoresSafeArea()
     }
 }
 

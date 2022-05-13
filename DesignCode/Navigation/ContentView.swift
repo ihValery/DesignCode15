@@ -29,9 +29,11 @@ struct ContentView: View {
                 Color.purple
                     .ignoresSafeArea()
             }
-            
+        }
+        .safeAreaInset(edge: .bottom) {
             TabBarView($selectTab)
         }
+        .ignoresSafeArea()
     }
 }
 
