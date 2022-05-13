@@ -10,7 +10,6 @@ import SwiftUI
 //MARK: - ColorExtension
 
 extension Color {
-    static let accentDefault = Color("AccentColor")
     static let backgroundDefault = Color("Background")
     static let shadowDefault = Color("Shadow")
 }

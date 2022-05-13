@@ -9,8 +9,8 @@ import SwiftUI
 
 //MARK: - ViewExtension
 
-extension View {
-    func getScreenSize() -> CGSize {
-        UIScreen.main.bounds.size
-    }
-}
+//extension View {
+//    func getScreenSize() -> CGSize {
+//        UIScreen.main.bounds.size
+//    }
+//}
