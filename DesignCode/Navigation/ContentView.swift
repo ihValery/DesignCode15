@@ -21,8 +21,7 @@ struct ContentView: View {
             case .home:
                 HomeView()
             case .explore:
-                Color.teal
-                    .ignoresSafeArea()
+                AccountView()
             case .notification:
                 Color.pink
                     .ignoresSafeArea()

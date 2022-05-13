@@ -1,5 +1,5 @@
 //
-//  ViewExtension.swift
+//  View.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 4.05.22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//MARK: - ViewExtension
+//MARK: - View
 
 //extension View {
 //    func getScreenSize() -> CGSize {

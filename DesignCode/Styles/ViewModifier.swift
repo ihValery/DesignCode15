@@ -1,5 +1,5 @@
 //
-//  StylesModifier.swift
+//  ViewModifier.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 3.05.22.

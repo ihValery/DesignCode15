@@ -23,18 +23,17 @@ struct AccountView: View {
     //MARK: Properties
 
     var body: some View {
-//        NavigationView {
-            Text("1231")
-//            List {
-////                profile
-//
-////                menu
-//
-////                links
-//            }
-//            .listStyle(.insetGrouped)
-//            .navigationTitle(GlobalConstant.Account.navigationTitle)
-//        }
+        NavigationView {
+            List {
+                profile
+                
+                menu
+                
+                links
+            }
+            .listStyle(.insetGrouped)
+            .navigationTitle(GlobalConstant.Account.navigationTitle)
+        }
     }
     
     private var profile: some View {

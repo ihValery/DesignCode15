@@ -35,15 +35,15 @@ struct HomeView: View {
                 )
                 .defaultStroke(GlobalConstant.Corner.logoBackground)
             
-            DefaultTextView(GlobalConstant.Text.homeCardTitle,
+            DefaultText(GlobalConstant.Text.homeCardTitle,
                             font: .largeTitle, weight: .bold)
             .foregroundStyle(InternalConstant.gradientForText)
             
-            DefaultTextView(GlobalConstant.Text.homeCardSubtitle.uppercased(),
+            DefaultText(GlobalConstant.Text.homeCardSubtitle.uppercased(),
                             font: .footnote, weight: .semibold)
             .foregroundStyle(.secondary)
             
-            DefaultTextView(GlobalConstant.Text.homeCardDescription,
+            DefaultText(GlobalConstant.Text.homeCardDescription,
                             font: .footnote, weight: .semibold, lineLimit: 2)
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(.secondary)

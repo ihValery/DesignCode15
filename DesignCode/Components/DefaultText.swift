@@ -1,5 +1,5 @@
 //
-//  DefaultTextView.swift
+//  DefaultText.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 2.05.22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//MARK: - DefaultTextView
+//MARK: - DefaultText
 
-struct DefaultTextView: View {
+struct DefaultText: View {
     
     //MARK: Properties
     
@@ -42,7 +42,7 @@ struct DefaultTextView: View {
 
 struct DefaultTextView_Previews: PreviewProvider {
     static var previews: some View {
-        DefaultTextView(GlobalConstant.Text.homeCardTitle,
+        DefaultText(GlobalConstant.Text.homeCardTitle,
                         font: .largeTitle, weight: .bold)
     }
 }
