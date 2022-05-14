@@ -28,7 +28,7 @@ struct FeaturedCourse: View {
         VStack(alignment: .leading, spacing: GlobalConstant.Padding.step8) {
             Spacer()
             
-            createLogo
+            LogoButton(course.logo)
             
             DefaultText(course.title, font: .largeTitle, weight: .bold)
                 .foregroundStyle(InternalConstant.gradientForText)
@@ -59,20 +59,6 @@ struct FeaturedCourse: View {
         .onDisappear {
             print("Bye ContentView")
         }
-    }
-    
-    var createLogo: some View {
-        Image(course.logo)
-            .resizable()
-            .scaledToFit()
-            .frame(width: GlobalConstant.Size.homeCardLogo.width,
-                   height: GlobalConstant.Size.homeCardLogo.height)
-            .cornerRadius(GlobalConstant.Corner.logo)
-            .padding(GlobalConstant.Padding.step9)
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.logoBackground, style: .continuous)
-            )
-            .defaultStroke(GlobalConstant.Corner.logoBackground)
     }
     
     var createImage: some View {

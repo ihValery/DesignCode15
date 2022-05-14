@@ -1,5 +1,5 @@
 //
-//  AvatarButton.swift
+//  LogoButton.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 14.05.22.
@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-//MARK: - AvatarButton
+//MARK: - LogoButton
 
-struct AvatarButton: View {
+struct LogoButton: View {
     
     //MARK: Internal Constant
     
     struct InternalConstant {
-        static let sizeAvatar: CGSize = .init(width: 26, height: 26)
+        static let sizeLogo: CGSize = .init(width: 26, height: 26)
+        static let cornerLogo: CGFloat = 10
+        static let cornerButton: CGFloat = 16
     }
     
     //MARK: Properties
@@ -25,14 +27,14 @@ struct AvatarButton: View {
         VStack {
             Image(image)
                 .resizable()
-                .frame(width: InternalConstant.sizeAvatar.width,
-                       height: InternalConstant.sizeAvatar.height)
-                .cornerRadius(GlobalConstant.Corner.logo)
+                .frame(width: InternalConstant.sizeLogo.width,
+                       height: InternalConstant.sizeLogo.height)
+                .cornerRadius(InternalConstant.cornerLogo)
                 .padding(GlobalConstant.Padding.step9)
                 .background(.ultraThinMaterial,
-                            in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonAvatar,
+                            in: RoundedRectangle(cornerRadius: InternalConstant.cornerButton,
                                                  style: .continuous))
-                .defaultStroke(GlobalConstant.Corner.buttonAvatar)
+                .defaultStroke(InternalConstant.cornerButton)
                 .defaultShadow()
         }
     }
@@ -49,12 +51,12 @@ struct AvatarButton: View {
 struct AvatarButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AvatarButton(GlobalConstant.Avatar.avatarDefault)
+            LogoButton(GlobalConstant.Avatar.avatarDefault)
             
-            AvatarButton(GlobalConstant.Avatar.avatarOne)
+            LogoButton(GlobalConstant.Avatar.avatarOne)
                 .preferredColorScheme(.dark)
 
-            AvatarButton(GlobalConstant.Avatar.avatarThree)
+            LogoButton(GlobalConstant.Avatar.avatarThree)
         }
         .previewLayout(.fixed(width: 100, height: 100))
     }

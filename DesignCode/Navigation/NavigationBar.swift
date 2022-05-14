@@ -34,7 +34,7 @@ struct NavigationBar: View {
                 
                 magnifyingglass
                 
-                AvatarButton(GlobalConstant.Avatar.avatarDefault)
+                LogoButton(GlobalConstant.Avatar.avatarDefault)
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
             .padding(.top, hasScroll ? 0 : GlobalConstant.Padding.stepDefault)

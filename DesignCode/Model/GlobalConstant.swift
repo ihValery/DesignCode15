@@ -14,14 +14,12 @@ struct GlobalConstant {
     struct Corner {
         ///30
         static let card: CGFloat = 30
-        ///10
-        static let logo: CGFloat = 10
-        ///16
-        static let logoBackground: CGFloat = 16
+//        ///16
+//        static let logoBackground: CGFloat = 16
         ///14
         static let buttonMagnifyingglass: CGFloat = 14
-        ///16
-        static let buttonAvatar: CGFloat = 16
+//        /16
+//        static let buttonAvatar: CGFloat = 16
         ///34
         static let tabBar: CGFloat = 34
         static let tabBarDash: CGFloat = 3
@@ -60,13 +58,6 @@ struct GlobalConstant {
         static let iconLibrary = "rectangle.stack"
     }
     
-    struct Logos {
-        static let logo1 = "Logo 1"
-        static let logo2 = "Logo 2"
-        static let logo3 = "Logo 3"
-        static let logo4 = "Logo 4"
-    }
-    
     struct Images {
         static let blobOne: Image = Image("Blob 1")
         
@@ -91,6 +82,13 @@ struct GlobalConstant {
         static let background8: Image = Image("Background 8")
         static let background9: Image = Image("Background 9")
         static let background10: Image = Image("Background 10")
+    }
+    
+    struct Logos {
+        static let logo1 = "Logo 1"
+        static let logo2 = "Logo 2"
+        static let logo3 = "Logo 3"
+        static let logo4 = "Logo 4"
     }
     
     struct Avatar {

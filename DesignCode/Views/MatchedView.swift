@@ -59,7 +59,7 @@ struct MatchedView: View {
                             
                             Divider()
                             HStack {
-                                AvatarButton(GlobalConstant.Avatar.avatarThree)
+                                LogoButton(GlobalConstant.Avatar.avatarThree)
                                 
                                 DefaultText("Create ihValery", font: .footnote, weight: .regular)
                             }
