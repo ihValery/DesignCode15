@@ -117,6 +117,5 @@ struct GlobalConstant {
     
     struct NavigationBar {
         static let title = "Featured"
-        static let magnifyingglass = "magnifyingglass"
     }
 }

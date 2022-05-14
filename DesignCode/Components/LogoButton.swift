@@ -16,7 +16,7 @@ struct LogoButton: View {
     struct InternalConstant {
         static let sizeLogo: CGSize = .init(width: 26, height: 26)
         static let cornerLogo: CGFloat = 10
-        static let cornerButton: CGFloat = 16
+        static let cornerButton: CGFloat = 14
     }
     
     //MARK: Properties

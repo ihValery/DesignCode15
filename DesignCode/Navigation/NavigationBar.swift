@@ -32,7 +32,7 @@ struct NavigationBar: View {
                 
                 Spacer()
                 
-                magnifyingglass
+                SearchButton()
                 
                 LogoButton(GlobalConstant.Avatar.avatarDefault)
             }
@@ -42,18 +42,6 @@ struct NavigationBar: View {
         .frame(height: hasScroll ? 44 : GlobalConstant.Size.navigationBar.height)
     }
     
-    var magnifyingglass: some View {
-        Image(systemName: GlobalConstant.NavigationBar.magnifyingglass)
-            .font(.body.bold())
-            .frame(width: GlobalConstant.Size.buttonMagnifyingglass.width,
-                   height: GlobalConstant.Size.buttonMagnifyingglass.height)
-            .foregroundColor(.secondary)
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonMagnifyingglass,
-                                             style: .continuous))
-            .defaultStroke(GlobalConstant.Corner.buttonMagnifyingglass)
-    }
-
     //MARK: Initializer
     
     init(_ title: String,_ hasScroll: Binding<Bool>) {
