@@ -20,50 +20,126 @@ struct MatchedView: View {
     var body: some View {
         ZStack {
             if isFullScreen {
-                VStack(alignment: .leading, spacing: 12) {
+                ScrollView(.vertical, showsIndicators: true) {
+                    VStack {
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: GlobalConstant.Size.homeCardIsFullScreen.height)
+                    .foregroundColor(.black)
+                    .padding(GlobalConstant.Padding.stepDefault)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(
+                        GlobalConstant.Images.illustration9
+                            .resizable()
+                            .scaledToFit()
+                            .matchedGeometryEffect(id: "image", in: namespace)
+                    )
+                    .background(
+                        GlobalConstant.Images.background5
+                            .resizable()
+                            .scaledToFill()
+                            .matchedGeometryEffect(id: "background", in: namespace)
+                    )
+                    .mask(
+                        RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
+                                         style: .continuous)
+                        .matchedGeometryEffect(id: "mask", in: namespace)
+                    )
+                    .overlay(
+                        VStack(alignment: .leading, spacing: 12) {
+                            DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
+                                .matchedGeometryEffect(id: "title", in: namespace)
+                            
+                            DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
+                                .matchedGeometryEffect(id: "subtitle", in: namespace)
+                            
+                            DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
+                                .matchedGeometryEffect(id: "text", in: namespace)
+                            
+                            Divider()
+                            HStack {
+                                Image(GlobalConstant.Avatar.avatarDefault)
+                                    .resizable()
+                                    .frame(width: GlobalConstant.Size.buttonAvatar.width,
+                                           height: GlobalConstant.Size.buttonAvatar.height)
+                                    .cornerRadius(GlobalConstant.Corner.logo)
+                                    .padding(GlobalConstant.Padding.step8)
+                                    .background(.ultraThinMaterial,
+                                                in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonAvatar,
+                                                                     style: .continuous))
+                                    .defaultStroke(GlobalConstant.Corner.buttonAvatar)
+                                
+                                DefaultText("Create ihValery", font: .footnote, weight: .regular)
+                            }
+                        }
+                            .padding(GlobalConstant.Padding.stepDefault)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(
+                                Rectangle()
+                                    .fill(.ultraThinMaterial)
+                                    .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
+                                                           style: .continuous))
+                                    .matchedGeometryEffect(id: "blur", in: namespace)
+                            )
+                            .offset(y: 250)
+                            .padding(GlobalConstant.Padding.stepDefault)
+                    )
+                }
+                .ignoresSafeArea()
+
+            } else {
+                ///small Card
+                VStack {
                     Spacer()
                     
-                    DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
-                        .matchedGeometryEffect(id: "text", in: namespace)
-                    
-                    DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
-                        .matchedGeometryEffect(id: "subtitle", in: namespace)
-                    
-                    DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
-                        .matchedGeometryEffect(id: "title", in: namespace)
-                }
-                .foregroundColor(.black)
-                .padding(20)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .background(
-                    Color.pink
-                        .matchedGeometryEffect(id: "background", in: namespace)
-                        .ignoresSafeArea()
-                )
-                .padding(20)
-            } else {
-                VStack(alignment: .leading, spacing: 12) {
-                    DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
-                        .matchedGeometryEffect(id: "title", in: namespace)
-                    
-                    DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
-                        .matchedGeometryEffect(id: "subtitle", in: namespace)
-                    
-                    DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
-                        .matchedGeometryEffect(id: "text", in: namespace)
+                    VStack(alignment: .leading, spacing: 12) {
+                        DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
+                            .matchedGeometryEffect(id: "title", in: namespace)
+                        
+                        DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
+                            .matchedGeometryEffect(id: "subtitle", in: namespace)
+                        
+                        DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
+                            .matchedGeometryEffect(id: "text", in: namespace)
+                    }
+                    .padding(GlobalConstant.Padding.stepDefault)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
+                                                   style: .continuous))
+                            .blur(radius: 30)
+                            .offset(y: 25)
+                            .matchedGeometryEffect(id: "blur", in: namespace)
+                    )
                 }
                 .foregroundColor(.white)
-                .padding(20)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(
-                    Color.purple
+                    GlobalConstant.Images.illustration9
+                        .resizable()
+                        .scaledToFit()
+                        .matchedGeometryEffect(id: "image", in: namespace)
+                )
+                .background(
+                    GlobalConstant.Images.background5
+                        .resizable()
+                        .scaledToFill()
                         .matchedGeometryEffect(id: "background", in: namespace)
                 )
-                .padding(20)
+                .mask(
+                    RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
+                                     style: .continuous)
+                    .matchedGeometryEffect(id: "mask", in: namespace)
+                )
+                .frame(height: GlobalConstant.Size.homeCard.height)
+                .padding(GlobalConstant.Padding.stepDefault)
             }
         }
         .onTapGesture {
-            withAnimation(.linear) {
+            withAnimation(.linear(duration: 1)) {
                 isFullScreen.toggle()                
             }
         }
