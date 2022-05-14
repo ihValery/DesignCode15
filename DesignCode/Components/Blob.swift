@@ -1,5 +1,5 @@
 //
-//  BlobView.swift
+//  Blob.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 3.05.22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//MARK: - BlobView
+//MARK: - Blob
 
-struct BlobView: View {
+struct Blob: View {
     
     //MARK: Internal Constant
     
@@ -73,6 +73,6 @@ struct BlobView: View {
 
 struct BlobView_Previews: PreviewProvider {
     static var previews: some View {
-        BlobView()
+        Blob()
     }
 }
