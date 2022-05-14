@@ -41,6 +41,7 @@ struct GlobalConstant {
         static let homeCardImage: CGSize = .init(width: 0, height: 230)
         static let homeCardLogo: CGSize = .init(width: 26, height: 26)
         static let tabBar: CGSize = .init(width: 0, height: 88)
+        static let homeCardIsFullScreen: CGSize = .init(width: 0, height: 500)
         static let tabBarIcon: CGSize = .init(width: 44, height: 29)
         static let tabBarCircle: CGSize = .init(width: 88, height: 88)
         static let tabBarDash: CGSize = .init(width: 28, height: 5)
@@ -69,6 +70,7 @@ struct GlobalConstant {
     
     struct Images {
         static let blobOne: Image = Image("Blob 1")
+        
         static let illustration1: Image = Image("Illustration 1")
         static let illustration2: Image = Image("Illustration 2")
         static let illustration3: Image = Image("Illustration 3")
@@ -79,6 +81,17 @@ struct GlobalConstant {
         static let illustration8: Image = Image("Illustration 8")
         static let illustration9: Image = Image("Illustration 9")
         static let illustration10: Image = Image("Illustration 10")
+        
+        static let background1: Image = Image("Background 1")
+        static let background2: Image = Image("Background 2")
+        static let background3: Image = Image("Background 3")
+        static let background4: Image = Image("Background 4")
+        static let background5: Image = Image("Background 5")
+        static let background6: Image = Image("Background 6")
+        static let background7: Image = Image("Background 7")
+        static let background8: Image = Image("Background 8")
+        static let background9: Image = Image("Background 9")
+        static let background10: Image = Image("Background 10")
     }
     
     struct Avatar {
