@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ShadowModifier: ViewModifier {
     func body(content: Content) -> some View {
-        content.shadow(color: .shadowDefault.opacity(0.15), radius: 20, x: 0, y: 20)
+        content.shadow(color: .shadowDefault.opacity(0.15), radius: 10, x: 0, y: 10)
     }
 }
 
@@ -40,21 +40,6 @@ struct StrokeModifier: ViewModifier {
               startPoint: .topLeading, endPoint: .bottomTrailing)
     }
     
-    func body(content: Content) -> some View {
-        content.overlay(
-            shapeForOverlay
-        )
-    }
-    
-    //MARK: Initializer
-    
-    init(_ shape: ShapeType,_ cornerRadius: CGFloat) {
-        self.shape = shape
-        self.cornerRadius = cornerRadius
-    }
-    
-    //MARK: Private Methods
-
     @ViewBuilder private var shapeForOverlay: some View {
         switch shape {
         case .circle:
@@ -66,5 +51,18 @@ struct StrokeModifier: ViewModifier {
                 .stroke(gradient)
                 .blendMode(.overlay)
         }
+    }
+    
+    func body(content: Content) -> some View {
+        content.overlay(
+            shapeForOverlay
+        )
+    }
+    
+    //MARK: Initializer
+    
+    init(_ shape: ShapeType,_ cornerRadius: CGFloat) {
+        self.shape = shape
+        self.cornerRadius = cornerRadius
     }
 }

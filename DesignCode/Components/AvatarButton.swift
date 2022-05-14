@@ -1,15 +1,15 @@
 //
-//  LogoButton.swift
+//  AvatarButton.swift
 //  DesignCode
 //
-//  Created by Валерий Игнатьев on 14.05.22.
+//  Created by Валерий Игнатьев on 15.05.22.
 //
 
 import SwiftUI
 
-//MARK: - LogoButton
+//MARK: - AvatarButton
 
-struct LogoButton: View {
+struct AvatarButton: View {
     
     //MARK: Internal Constant
     
@@ -30,9 +30,9 @@ struct LogoButton: View {
                    height: InternalConstant.sizeLogo.height)
             .cornerRadius(InternalConstant.cornerLogo)
             .padding(GlobalConstant.Padding.step9)
-//            .background(.primary,
-//                        in: RoundedRectangle(cornerRadius: InternalConstant.cornerButton,
-//                                             style: .continuous))
+            .background(.ultraThinMaterial,
+                        in: RoundedRectangle(cornerRadius: InternalConstant.cornerButton,
+                                             style: .continuous))
             .defaultStroke(.rectangle, InternalConstant.cornerButton)
             .defaultShadow()
     }
@@ -46,14 +46,14 @@ struct LogoButton: View {
 
 //MARK: - PreviewProvider
 
-struct LogoButton_Previews: PreviewProvider {
+struct AvatarButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LogoButton(GlobalConstant.Logos.logo1)
+            AvatarButton(GlobalConstant.Avatar.avatarDefault)
             
-            LogoButton(GlobalConstant.Logos.logo2)
+            AvatarButton(GlobalConstant.Avatar.avatarOne)
             
-            LogoButton(GlobalConstant.Logos.logo4)
+            AvatarButton(GlobalConstant.Avatar.avatarThree)
                 .preferredColorScheme(.dark)
         }
         .previewLayout(.fixed(width: 100, height: 100))
