@@ -31,7 +31,7 @@ struct SearchButton: View {
             .background(.ultraThinMaterial,
                         in: RoundedRectangle(cornerRadius: InternalConstant.cornerButton,
                                              style: .continuous))
-            .defaultStroke(InternalConstant.cornerButton)
+            .defaultStroke(.rectangle, InternalConstant.cornerButton)
             .defaultShadow()
     }
 }

@@ -45,13 +45,12 @@ struct FeaturedCourse: View {
         .frame(height: GlobalConstant.Size.homeCard.height)
         .background(.ultraThinMaterial)
         .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
-        .defaultStroke()
+        .defaultStroke(.rectangle)
         .padding(.horizontal, GlobalConstant.Padding.stepDefault)
         .rotation3DEffect(.degrees(geometryMinX / -10), axis: (x: 0, y: 1, z: 0))
         .defaultShadow()
         .blur(radius: abs(geometryMinX / 40))
-        .overlay(createImage)
-        
+        .overlay(createImage)        
         
         .onAppear {
             print("Hello ContentView")

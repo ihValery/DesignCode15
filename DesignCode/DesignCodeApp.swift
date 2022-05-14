@@ -12,7 +12,8 @@ struct DesignCodeApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            MatchedView()
+//            MatchedView()
+            HomeView()
         }
     }
 }

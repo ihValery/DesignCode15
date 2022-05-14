@@ -50,7 +50,7 @@ struct AccountView: View {
                         .offset(InternalConstant.offsetHexagon)
                 )
                 .background(
-                    BlobView()
+                    Blob()
                         .offset(InternalConstant.offsetBlob)
                         .scaleEffect(0.6)
                 )

@@ -25,7 +25,6 @@ struct NavigationBar: View {
                 .opacity(hasScroll ? 1 : 0)
             
             HStack(spacing: 16) {
-//                DefaultText(title, font: .largeTitle, weight: .bold)
                 Text(title)
                     .bold()
                     .animatableFont(hasScroll ? 22 : 34)
@@ -34,10 +33,10 @@ struct NavigationBar: View {
                 
                 SearchButton()
                 
-                LogoButton(GlobalConstant.Avatar.avatarDefault)
+                AvatarButton(GlobalConstant.Avatar.avatarThree)
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .padding(.top, hasScroll ? 0 : GlobalConstant.Padding.stepDefault)
+            .padding(.bottom, hasScroll ? GlobalConstant.Padding.step6 : 0)
         }
         .frame(height: hasScroll ? 44 : GlobalConstant.Size.navigationBar.height)
     }
@@ -55,6 +54,6 @@ struct NavigationBar: View {
 struct NavigationBar_Previews: PreviewProvider {
     static var previews: some View {
         NavigationBar(GlobalConstant.NavigationBar.title, .constant(false))
-            .background(.cyan)
+            .background(.cyan.opacity(0.1))
     }
 }

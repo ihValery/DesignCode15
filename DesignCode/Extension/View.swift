@@ -26,8 +26,8 @@ extension View {
         modifier(ShadowModifier())
     }
     
-    func defaultStroke(_ cornerRadius: CGFloat = GlobalConstant.Corner.card) -> some View {
-        modifier(StrokeModifier(cornerRadius))
+    func defaultStroke(_ shape: StrokeModifier.ShapeType, _ cornerRadius: CGFloat = GlobalConstant.Corner.card) -> some View {
+        modifier(StrokeModifier(shape, cornerRadius))
     }
     
     func animatableFont(_ size: Double) -> some View {
