@@ -34,7 +34,7 @@ struct NavigationBar: View {
                 
                 magnifyingglass
                 
-                avatar
+                AvatarButton(GlobalConstant.Avatar.avatarDefault)
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
             .padding(.top, hasScroll ? 0 : GlobalConstant.Padding.stepDefault)
@@ -52,19 +52,6 @@ struct NavigationBar: View {
                         in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonMagnifyingglass,
                                              style: .continuous))
             .defaultStroke(GlobalConstant.Corner.buttonMagnifyingglass)
-    }
-    
-    var avatar: some View {
-        Image(GlobalConstant.Avatar.avatarDefault)
-            .resizable()
-            .frame(width: GlobalConstant.Size.buttonAvatar.width,
-                   height: GlobalConstant.Size.buttonAvatar.height)
-            .cornerRadius(GlobalConstant.Corner.logo)
-            .padding(GlobalConstant.Padding.step8)
-            .background(.ultraThinMaterial,
-                        in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonAvatar,
-                                             style: .continuous))
-            .defaultStroke(GlobalConstant.Corner.buttonAvatar)
     }
 
     //MARK: Initializer

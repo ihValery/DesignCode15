@@ -47,7 +47,6 @@ struct GlobalConstant {
         static let tabBarDash: CGSize = .init(width: 28, height: 5)
         static let navigationBar: CGSize = .init(width: 0, height: 70)
         static let buttonMagnifyingglass: CGSize = .init(width: 36, height: 36)
-        static let buttonAvatar: CGSize = .init(width: 26, height: 26)
     }
     
     struct TabBar {

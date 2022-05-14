@@ -11,7 +11,7 @@ import SwiftUI
 
 struct ShadowModifier: ViewModifier {
     func body(content: Content) -> some View {
-        content.shadow(color: .shadowDefault.opacity(0.3), radius: 10, x: 0, y: 10)
+        content.shadow(color: .shadowDefault.opacity(0.15), radius: 20, x: 0, y: 20)
     }
 }
 
@@ -26,9 +26,9 @@ struct StrokeModifier: ViewModifier {
     private let cornerRadius: CGFloat
     
     private var gradient: LinearGradient {
-        .init(colors: [.white.opacity(colorScheme == .dark ? 0.1 : 0.3),
+        .init(colors: [.white.opacity(colorScheme == .dark ? 0.6 : 0.3),
                        .black.opacity(colorScheme == .dark ? 0.3 : 0.1)],
-              startPoint: .top, endPoint: .bottom)
+              startPoint: .topLeading, endPoint: .bottomTrailing)
     }
     
     func body(content: Content) -> some View {

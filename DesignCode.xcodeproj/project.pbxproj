@@ -13,6 +13,8 @@
 		80124C8B282EDF6C0014D56A /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8A282EDF6C0014D56A /* CourseModel.swift */; };
 		80124C8D282EE86F0014D56A /* CourseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8C282EE86F0014D56A /* CourseVM.swift */; };
 		80124C8F282FAA940014D56A /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8E282FAA940014D56A /* MatchedView.swift */; };
+		80124C9128301F310014D56A /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C9028301F310014D56A /* AvatarButton.swift */; };
+		80124C93283027500014D56A /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C92283027500014D56A /* SearchButton.swift */; };
 		802A3F46282E84D40028B7D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A3F45282E84D40028B7D7 /* HomeView.swift */; };
 		806405C5282EA44300CEB982 /* FeaturedCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C4282EA44300CEB982 /* FeaturedCourse.swift */; };
 		806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C6282EA80F00CEB982 /* NavigationBar.swift */; };
@@ -38,6 +40,8 @@
 		80124C8A282EDF6C0014D56A /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		80124C8C282EE86F0014D56A /* CourseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVM.swift; sourceTree = "<group>"; };
 		80124C8E282FAA940014D56A /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
+		80124C9028301F310014D56A /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
+		80124C92283027500014D56A /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		802A3F45282E84D40028B7D7 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		806405C4282EA44300CEB982 /* FeaturedCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCourse.swift; sourceTree = "<group>"; };
 		806405C6282EA80F00CEB982 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 				80892C6128214E6E00204DC4 /* AccountView.swift */,
 				802A3F45282E84D40028B7D7 /* HomeView.swift */,
 				80124C8E282FAA940014D56A /* MatchedView.swift */,
+				806405C4282EA44300CEB982 /* FeaturedCourse.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,7 +177,8 @@
 			children = (
 				80892C65282196FC00204DC4 /* BlobView.swift */,
 				80B5E0BE28204255000B381D /* DefaultText.swift */,
-				806405C4282EA44300CEB982 /* FeaturedCourse.swift */,
+				80124C9028301F310014D56A /* AvatarButton.swift */,
+				80124C92283027500014D56A /* SearchButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 				80892C66282196FC00204DC4 /* BlobView.swift in Sources */,
 				80124C87282EC7400014D56A /* PreferenceKeys.swift in Sources */,
 				806405C5282EA44300CEB982 /* FeaturedCourse.swift in Sources */,
+				80124C93283027500014D56A /* SearchButton.swift in Sources */,
 				806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */,
 				80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */,
 				80124C8F282FAA940014D56A /* MatchedView.swift in Sources */,
@@ -266,6 +273,7 @@
 				80124C8D282EE86F0014D56A /* CourseVM.swift in Sources */,
 				80892C6F2822A62C00204DC4 /* TabBarView.swift in Sources */,
 				80892C692822A2A700204DC4 /* TabBarModel.swift in Sources */,
+				80124C9128301F310014D56A /* AvatarButton.swift in Sources */,
 				80892C712822C5D400204DC4 /* View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,27 +48,18 @@ struct MatchedView: View {
                     )
                     .overlay(
                         VStack(alignment: .leading, spacing: 12) {
+                            
+                            DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
+                                .matchedGeometryEffect(id: "text", in: namespace)
                             DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
                                 .matchedGeometryEffect(id: "title", in: namespace)
                             
                             DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
                                 .matchedGeometryEffect(id: "subtitle", in: namespace)
                             
-                            DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
-                                .matchedGeometryEffect(id: "text", in: namespace)
-                            
                             Divider()
                             HStack {
-                                Image(GlobalConstant.Avatar.avatarDefault)
-                                    .resizable()
-                                    .frame(width: GlobalConstant.Size.buttonAvatar.width,
-                                           height: GlobalConstant.Size.buttonAvatar.height)
-                                    .cornerRadius(GlobalConstant.Corner.logo)
-                                    .padding(GlobalConstant.Padding.step8)
-                                    .background(.ultraThinMaterial,
-                                                in: RoundedRectangle(cornerRadius: GlobalConstant.Corner.buttonAvatar,
-                                                                     style: .continuous))
-                                    .defaultStroke(GlobalConstant.Corner.buttonAvatar)
+                                AvatarButton(GlobalConstant.Avatar.avatarThree)
                                 
                                 DefaultText("Create ihValery", font: .footnote, weight: .regular)
                             }
@@ -139,7 +130,7 @@ struct MatchedView: View {
             }
         }
         .onTapGesture {
-            withAnimation(.linear(duration: 1)) {
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                 isFullScreen.toggle()                
             }
         }
