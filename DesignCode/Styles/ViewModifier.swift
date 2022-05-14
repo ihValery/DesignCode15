@@ -18,10 +18,19 @@ struct ShadowModifier: ViewModifier {
 //MARK: - StrokeModifier
 
 struct StrokeModifier: ViewModifier {
-
+    
+    //MARK: Enum
+    
+    enum ShapeType {
+        case circle
+        case rectangle
+    }
+    
     //MARK: Properties
     
     @Environment(\.colorScheme) var colorScheme
+    
+    private let shape: ShapeType
     
     private let cornerRadius: CGFloat
     
@@ -33,15 +42,29 @@ struct StrokeModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content.overlay(
-            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-                .stroke(gradient)
-                .blendMode(.overlay)
+            shapeForOverlay
         )
     }
     
     //MARK: Initializer
     
-    init(_ cornerRadius: CGFloat) {
+    init(_ shape: ShapeType,_ cornerRadius: CGFloat) {
+        self.shape = shape
         self.cornerRadius = cornerRadius
+    }
+    
+    //MARK: Private Methods
+
+    @ViewBuilder private var shapeForOverlay: some View {
+        switch shape {
+        case .circle:
+            Circle()
+                .stroke(gradient)
+                .blendMode(.overlay)
+        case .rectangle:
+            RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                .stroke(gradient)
+                .blendMode(.overlay)
+        }
     }
 }

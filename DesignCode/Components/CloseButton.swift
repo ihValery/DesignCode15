@@ -19,15 +19,7 @@ struct CloseButton: View {
     }
     
     //MARK: Properties
-    
-    @Environment(\.colorScheme) var colorScheme
-    
-    private var gradient: LinearGradient {
-        .init(colors: [.white.opacity(colorScheme == .dark ? 0.6 : 0.3),
-                       .black.opacity(colorScheme == .dark ? 0.3 : 0.1)],
-              startPoint: .topLeading, endPoint: .bottomTrailing)
-    }
-    
+
     var body: some View {
         Image(systemName: InternalConstant.xmark)
             .font(.body.bold())
@@ -36,7 +28,7 @@ struct CloseButton: View {
                    height: InternalConstant.sizeLogo.height)
             .padding(GlobalConstant.Padding.step8)
             .background(.ultraThinMaterial, in: Circle())
-            .overlay(Circle().stroke(gradient))
+            .defaultStroke(.circle)
             .defaultShadow()
     }
 }

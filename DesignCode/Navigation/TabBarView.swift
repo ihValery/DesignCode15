@@ -34,7 +34,7 @@ struct TabBarView: View {
             RoundedRectangle(cornerRadius: GlobalConstant.Corner.tabBar,
                              style: .continuous)
         )
-        .defaultStroke(GlobalConstant.Corner.tabBar)
+        .defaultStroke(.rectangle, GlobalConstant.Corner.tabBar)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
     }
