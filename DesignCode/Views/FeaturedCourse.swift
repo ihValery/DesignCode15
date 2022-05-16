@@ -51,13 +51,6 @@ struct FeaturedCourse: View {
         .defaultShadow()
         .blur(radius: abs(geometryMinX / 40))
         .overlay(createImage)        
-        
-        .onAppear {
-            print("Hello ContentView")
-        }
-        .onDisappear {
-            print("Bye ContentView")
-        }
     }
     
     var createImage: some View {
