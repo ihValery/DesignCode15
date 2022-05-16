@@ -18,18 +18,30 @@ struct CloseButton: View {
         static let xmark = "xmark"
     }
     
+    private let action: () -> Void
+    
     //MARK: Properties
 
     var body: some View {
-        Image(systemName: InternalConstant.xmark)
-            .font(.body.bold())
-            .foregroundColor(.secondary)
-            .frame(width: InternalConstant.sizeLogo.width,
-                   height: InternalConstant.sizeLogo.height)
-            .padding(GlobalConstant.Padding.step8)
-            .background(.ultraThinMaterial, in: Circle())
-            .defaultStroke(.circle)
-            .defaultShadow()
+        Button {
+            action()
+        } label: {
+            Image(systemName: InternalConstant.xmark)
+                .font(.body.bold())
+                .foregroundColor(.secondary)
+                .frame(width: InternalConstant.sizeLogo.width,
+                       height: InternalConstant.sizeLogo.height)
+                .padding(GlobalConstant.Padding.step8)
+                .background(.ultraThinMaterial, in: Circle())
+                .defaultStroke(.circle)
+                .defaultShadow()
+        }
+    }
+    
+    //MARK: Initializer
+    
+    init(action: @escaping () -> Void) {
+        self.action = action
     }
 }
 
@@ -38,8 +50,8 @@ struct CloseButton: View {
 struct CloseButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            CloseButton()
-            CloseButton()
+            CloseButton() { }
+            CloseButton() { }
                 .preferredColorScheme(.dark)
         }
         .previewLayout(.fixed(width: 100, height: 100))

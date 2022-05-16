@@ -20,7 +20,13 @@ struct HomeView: View {
     
     @ObservedObject private var courseViewModel = CourseVM()
     
+    @Namespace private var namespace
+    
     @State private var hasScroll: Bool = false
+    
+    @State private var isFullScreen: Bool = false
+    
+    @State private var isShowStatusBar: Bool = true
     
     var body: some View {
         ZStack {
@@ -30,17 +36,38 @@ struct HomeView: View {
                 scrollDetection
                 
                 featuredCourses
+                
+                headerCourse
+                
+                courseItem
             }
             .coordinateSpace(name: InternalConstant.coordinateSpace)
             
-            .safeAreaInset(edge: .top, content: {
+            .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
-            })
-            .overlay(NavigationBar(GlobalConstant.NavigationBar.title, $hasScroll), alignment: .top)
+            }
+            .overlay(
+                NavigationBar(GlobalConstant.NavigationBar.title, $hasScroll),
+                alignment: .top
+            )
+            
+            courseView
+        }
+        .statusBar(hidden: !isShowStatusBar)
+        .onChange(of: isFullScreen) { newValue in
+            withAnimation(.closeCard) { isShowStatusBar = !newValue }
+        }
+        
+        
+        .onAppear {
+            print("Appear HomeView")
+        }
+        .onDisappear {
+            print("Disappear HomeView")
         }
     }
     
-    var scrollDetection: some View {
+    private var scrollDetection: some View {
         GeometryReader { geometry in
             let minY = geometry.frame(in: .named(InternalConstant.coordinateSpace)).minY
             Color.clear
@@ -54,21 +81,47 @@ struct HomeView: View {
         })
     }
     
-    var featuredCourses: some View {
+    private var featuredCourses: some View {
         TabView {
             ForEach(courseViewModel.featuredItems) { course in
                 GeometryReader { geometry in
                     FeaturedCourse(course, geometryMinX: geometry.frame(in: .global).minX)
-                        .padding(.vertical, 40)
+                        .padding(.vertical, 20)
                 }
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(height: GlobalConstant.Size.homeCard.height + 80)
+        .frame(height: GlobalConstant.Size.homeCard.height + 50)
         .background(
             GlobalConstant.Images.blobOne
                 .offset(InternalConstant.offsetBackgroundFeatureItem)
         )
+    }
+    
+    private var headerCourse: some View {
+        DefaultText("Courses".uppercased(), font: .footnote, weight: .semibold)
+            .foregroundColor(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, GlobalConstant.Padding.stepDefault)
+    }
+    
+    private var courseItem: some View {
+        CourseItem(namespace: namespace)
+            .opacity(isFullScreen ? 0 : 1)
+            .onTapGesture {
+                withAnimation(.openCard) { isFullScreen.toggle() }
+            }
+    }
+    
+    @ViewBuilder private var courseView: some View {
+        if isFullScreen {
+            CourseView(namespace, $isFullScreen)
+                .zIndex(1)
+                .transition(
+                    .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
+                                removal: .opacity.animation(.easeOut.delay(0.2)))
+                )
+        }
     }
 }
 
