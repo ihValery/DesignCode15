@@ -118,8 +118,8 @@ struct CourseView: View {
     
     private var content: some View {
         ContentText()
-            .offset(y: 100)
-            .padding(.bottom, 100)
+            .offset(y: 130)
+            .padding(.bottom, 130)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
             .opacity(animationSplit[1] ? 1 : 0)
     }
