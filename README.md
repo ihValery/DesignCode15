@@ -1,6 +1,6 @@
 # DesignCode15
 
-<img src="https://github.com/ihValery/DesignCode15/blob/main/Image/headerPreView?raw=true"></a>
+<img src="https://github.com/ihValery/DesignCode15/blob/main/Image/headerPreView.png?raw=true"></a>
 
 - Закругления в стиле iOS
     - .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
