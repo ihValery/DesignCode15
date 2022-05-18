@@ -117,12 +117,14 @@ struct HomeView: View {
     
     @ViewBuilder private var courseView: some View {
         if isFullScreen {
-            CourseView(courseViewModel.courses[0], namespace, $isFullScreen)
-                .zIndex(1)
-                .transition(
-                    .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
-                                removal: .opacity.animation(.easeOut.delay(0.2)))
+            ForEach(courseViewModel.courses) { course in
+                CourseView(course, namespace, $isFullScreen)
+                    .zIndex(1)
+                    .transition(
+                        .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
+                                    removal: .opacity.animation(.easeOut.delay(0.2)))
                 )
+            }
         }
     }
 }

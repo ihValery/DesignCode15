@@ -13,7 +13,7 @@ struct CourseView: View {
     
     //MARK: Properties
     
-    @State private var appear: [Bool] = [false, false]
+    @State private var animationSplit: [Bool] = [false, false]
     
     private let course: CourseModel
     
@@ -38,12 +38,10 @@ struct CourseView: View {
         }
         
         .onAppear {
-            withAnimation(.easeOut.delay(0.2)) { appear[0] = true }
-            withAnimation(.easeOut.delay(0.3)) { appear[1] = true }
+            appearAnimation()
         }
-        .onChange(of: isFullScreen) { newValue in
-            appear[0] = false
-            appear[1] = false
+        .onChange(of: isFullScreen) { _ in
+            disappearAnimation()
         }
     }
     
@@ -59,24 +57,24 @@ struct CourseView: View {
     
     private var headerCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            DefaultText(course.title, font: .title, weight: .bold)
-                .matchedGeometryEffect(id: NSpaceCourseID.title, in: namespace)
+            DefaultText(course.title, font: .largeTitle, weight: .bold, lineLimit: 2)
+                .matchedGeometryEffect(id: "title\(course.id)", in: namespace)
             
             DefaultText(course.subtitle, font: .footnote, weight: .semibold)
-                .matchedGeometryEffect(id: NSpaceCourseID.subtitle, in: namespace)
+                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
             
             DefaultText(course.text, font: .footnote, weight: .semibold, lineLimit: 2)
-                .matchedGeometryEffect(id: NSpaceCourseID.text, in: namespace)
+                .matchedGeometryEffect(id: "text\(course.id)", in: namespace)
             
             Divider()
-                .opacity(appear[0] ? 1: 0)
+                .opacity(animationSplit[0] ? 1: 0)
             
             HStack {
                 LogoButton(GlobalConstant.Avatar.avatarThree)
                 
                 DefaultText("Create ihValery", font: .body, weight: .regular)
             }
-            .opacity(appear[1] ? 1: 0)
+            .opacity(animationSplit[1] ? 1: 0)
         }
         .padding(GlobalConstant.Padding.stepDefault)
         .background(backgroundHeader)
@@ -88,26 +86,26 @@ struct CourseView: View {
         Rectangle()
             .fill(.ultraThinMaterial)
             .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
-            .matchedGeometryEffect(id: NSpaceCourseID.blur, in: namespace)
+            .matchedGeometryEffect(id: "blur\(course.id)", in: namespace)
     }
     
     private var imageLogoCourse: some View {
         course.image
             .resizable()
             .scaledToFit()
-            .matchedGeometryEffect(id: NSpaceCourseID.image, in: namespace)
+            .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
     }
     
     private var imageBackground: some View {
         course.background
             .resizable()
             .scaledToFill()
-            .matchedGeometryEffect(id: NSpaceCourseID.background, in: namespace)
+            .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
     }
     
     private var cardForm: some View {
         RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
-        .matchedGeometryEffect(id: NSpaceCourseID.mask, in: namespace)
+        .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
     }
     
     private var closeButton: some View {
@@ -123,7 +121,7 @@ struct CourseView: View {
             .offset(y: 100)
             .padding(.bottom, 100)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .opacity(appear[1] ? 1 : 0)
+            .opacity(animationSplit[1] ? 1 : 0)
     }
     
     //MARK: Initializer
@@ -132,6 +130,18 @@ struct CourseView: View {
         self.course = course
         self.namespace = namespace
         self._isFullScreen = isFullScreen
+    }
+    
+    //MARK: Private Methods
+    
+    private func appearAnimation() {
+        withAnimation(.easeOut.delay(0.2)) { animationSplit[0] = true }
+        withAnimation(.easeOut.delay(0.3)) { animationSplit[1] = true }
+    }
+    
+    private func disappearAnimation() {
+        animationSplit[0] = false
+        animationSplit[1] = false
     }
 }
 

@@ -23,20 +23,21 @@ struct CourseItem: View {
             .background(imageLogoCourse)
             .background(imageBackground)
             .mask(cardForm)
-            .frame(height: GlobalConstant.Size.homeCard.height)
+            .frame(height: GlobalConstant.Size.homeCard.height - 50)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
+            .padding(.vertical)
     }
     
     private var headerCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            DefaultText(course.title, font: .title, weight: .bold)
-                .matchedGeometryEffect(id: NSpaceCourseID.title, in: namespace)
+            DefaultText(course.title, font: .largeTitle, weight: .bold, lineLimit: 2)
+                .matchedGeometryEffect(id: "title\(course.id)", in: namespace)
 
             DefaultText(course.subtitle, font: .footnote, weight: .semibold)
-                .matchedGeometryEffect(id: NSpaceCourseID.subtitle, in: namespace)
+                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
             
             DefaultText(course.text, font: .footnote, weight: .semibold, lineLimit: 2)
-                .matchedGeometryEffect(id: NSpaceCourseID.text, in: namespace)
+                .matchedGeometryEffect(id: "text\(course.id)", in: namespace)
         }
         .padding(GlobalConstant.Padding.stepDefault)
         .foregroundColor(.white)
@@ -48,28 +49,27 @@ struct CourseItem: View {
         Rectangle()
             .fill(.ultraThinMaterial)
             .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
-            .matchedGeometryEffect(id: NSpaceCourseID.blur, in: namespace)
+            .matchedGeometryEffect(id: "blur\(course.id)", in: namespace)
             .blur(radius: 30)
-            .offset(y: 25)
     }
     
     private var imageLogoCourse: some View {
         course.image
             .resizable()
             .scaledToFit()
-            .matchedGeometryEffect(id: NSpaceCourseID.image, in: namespace)
+            .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
     }
     
     private var imageBackground: some View {
         course.background
             .resizable()
             .scaledToFill()
-            .matchedGeometryEffect(id: NSpaceCourseID.background, in: namespace)
+            .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
     }
     
     private var cardForm: some View {
         RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
-        .matchedGeometryEffect(id: NSpaceCourseID.mask, in: namespace)
+        .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
     }
     
     //MARK: Initializer
