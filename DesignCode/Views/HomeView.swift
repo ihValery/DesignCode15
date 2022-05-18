@@ -106,21 +106,25 @@ struct HomeView: View {
     }
     
     private var courseItem: some View {
-        CourseItem(namespace: namespace)
-            .opacity(isFullScreen ? 0 : 1)
-            .onTapGesture {
-                withAnimation(.openCard) { isFullScreen.toggle() }
+        ForEach(courseViewModel.courses) { course in
+            CourseItem(course, namespace)
+                .opacity(isFullScreen ? 0 : 1)
+                .onTapGesture {
+                    withAnimation(.openCard) { isFullScreen.toggle() }
             }
+        }
     }
     
     @ViewBuilder private var courseView: some View {
         if isFullScreen {
-            CourseView(namespace, $isFullScreen)
-                .zIndex(1)
-                .transition(
-                    .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
-                                removal: .opacity.animation(.easeOut.delay(0.2)))
+            ForEach(courseViewModel.courses) { course in
+                CourseView(course, namespace, $isFullScreen)
+                    .zIndex(1)
+                    .transition(
+                        .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
+                                    removal: .opacity.animation(.easeOut.delay(0.2)))
                 )
+            }
         }
     }
 }

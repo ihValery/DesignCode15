@@ -13,57 +13,70 @@ struct CourseItem: View {
     
     //MARK: Properties
     
-    var namespace: Namespace.ID
+    private let course: CourseModel
     
-//    @State private var isFullScreen = false
+    private var namespace: Namespace.ID
     
     var body: some View {
-        VStack {
-            Spacer()
+        headerCard
+            .frame(maxWidth: .infinity, maxHeight: .infinity,  alignment: .bottom)
+            .background(imageLogoCourse)
+            .background(imageBackground)
+            .mask(cardForm)
+            .frame(height: GlobalConstant.Size.homeCard.height - 50)
+            .padding(.horizontal, GlobalConstant.Padding.stepDefault)
+            .padding(.vertical)
+    }
+    
+    private var headerCard: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            DefaultText(course.title, font: .largeTitle, weight: .bold, lineLimit: 2)
+                .matchedGeometryEffect(id: "title\(course.id)", in: namespace)
+
+            DefaultText(course.subtitle, font: .footnote, weight: .semibold)
+                .matchedGeometryEffect(id: "subtitle\(course.id)", in: namespace)
             
-            VStack(alignment: .leading, spacing: 12) {
-                DefaultText("SwiftUI iOS 15", font: .largeTitle, weight: .bold)
-                    .matchedGeometryEffect(id: "title", in: namespace)
-                
-                DefaultText("20 sections - 3 hours", font: .footnote, weight: .semibold)
-                    .matchedGeometryEffect(id: "subtitle", in: namespace)
-                
-                DefaultText("Build an iOS app for iOS 15 with custom layouts, animations and ...", font: .footnote, weight: .semibold, lineLimit: 3)
-                    .matchedGeometryEffect(id: "text", in: namespace)
-            }
-            .padding(GlobalConstant.Padding.stepDefault)
-            .frame(maxWidth: .infinity)
-            .background(
-                Rectangle()
-                    .fill(.ultraThinMaterial)
-                    .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
-                                           style: .continuous))
-                    .blur(radius: 30)
-                    .offset(y: 25)
-                    .matchedGeometryEffect(id: "blur", in: namespace)
-            )
+            DefaultText(course.text, font: .footnote, weight: .semibold, lineLimit: 2)
+                .matchedGeometryEffect(id: "text\(course.id)", in: namespace)
         }
-        .foregroundColor(.white)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            GlobalConstant.Images.illustration9
-                .resizable()
-                .scaledToFit()
-                .matchedGeometryEffect(id: "image", in: namespace)
-        )
-        .background(
-            GlobalConstant.Images.background5
-                .resizable()
-                .scaledToFill()
-                .matchedGeometryEffect(id: "background", in: namespace)
-        )
-        .mask(
-            RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
-                             style: .continuous)
-            .matchedGeometryEffect(id: "mask", in: namespace)
-        )
-        .frame(height: GlobalConstant.Size.homeCard.height)
         .padding(GlobalConstant.Padding.stepDefault)
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity)
+        .background(backgroundHeader)
+    }
+    
+    private var backgroundHeader: some View {
+        Rectangle()
+            .fill(.ultraThinMaterial)
+            .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
+            .matchedGeometryEffect(id: "blur\(course.id)", in: namespace)
+            .blur(radius: 30)
+    }
+    
+    private var imageLogoCourse: some View {
+        course.image
+            .resizable()
+            .scaledToFit()
+            .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
+    }
+    
+    private var imageBackground: some View {
+        course.background
+            .resizable()
+            .scaledToFill()
+            .matchedGeometryEffect(id: "background\(course.id)", in: namespace)
+    }
+    
+    private var cardForm: some View {
+        RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
+        .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+    }
+    
+    //MARK: Initializer
+    
+    init(_ course: CourseModel,_ namespace: Namespace.ID) {
+        self.course = course
+        self.namespace = namespace
     }
 }
 
@@ -71,8 +84,9 @@ struct CourseItem: View {
 
 struct CoursesItem_Previews: PreviewProvider {
     @Namespace static var namespace
+    static let course = CourseVM().courses[0]
     
     static var previews: some View {
-        CourseItem(namespace: namespace)
+        CourseItem(course, namespace)
     }
 }
