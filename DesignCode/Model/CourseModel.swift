@@ -16,16 +16,24 @@ struct CourseModel: Identifiable {
     var subtitle: String
     var text: String
     var image: Image
+    var background: Image
     var logo: String
     
     //MARK: Initializer
 
-    init(_ title: String, subtitle: String, text: String, image: Image, logo: String) {
+    init(_ title: String,
+         subtitle: String,
+         text: String,
+         image: Image,
+         background: Image,
+         logo: String) {
+        
         id = UUID()
         self.title = title
         self.subtitle = subtitle
         self.text = text
         self.image = image
+        self.background = background
         self.logo = logo
     }
 }

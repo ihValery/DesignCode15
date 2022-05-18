@@ -106,11 +106,13 @@ struct HomeView: View {
     }
     
     private var courseItem: some View {
-        CourseItem(namespace: namespace)
-            .opacity(isFullScreen ? 0 : 1)
-            .onTapGesture {
-                withAnimation(.openCard) { isFullScreen.toggle() }
+        ForEach(courseViewModel.courses) { course in
+            CourseItem(course, namespace)
+                .opacity(isFullScreen ? 0 : 1)
+                .onTapGesture {
+                    withAnimation(.openCard) { isFullScreen.toggle() }
             }
+        }
     }
     
     @ViewBuilder private var courseView: some View {
