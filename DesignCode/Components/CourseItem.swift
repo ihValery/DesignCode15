@@ -20,7 +20,7 @@ struct CourseItem: View {
     var body: some View {
         headerCard
             .frame(maxWidth: .infinity, maxHeight: .infinity,  alignment: .bottom)
-            .background(imageLogoCourse)
+            .background(imageLogoCourse, alignment: .top)
             .background(imageBackground)
             .mask(cardForm)
             .frame(height: GlobalConstant.Size.homeCard.height - 50)
@@ -58,6 +58,7 @@ struct CourseItem: View {
             .resizable()
             .scaledToFit()
             .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
+            .padding(.top, 5)
     }
     
     private var imageBackground: some View {

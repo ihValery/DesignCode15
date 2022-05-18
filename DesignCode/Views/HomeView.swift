@@ -22,11 +22,13 @@ struct HomeView: View {
     
     @Namespace private var namespace
     
-    @State private var hasScroll: Bool = false
+    @State private var hasScroll = false
     
-    @State private var isFullScreen: Bool = false
+    @State private var isFullScreen = false
     
-    @State private var isShowStatusBar: Bool = true
+    @State private var isShowStatusBar = true
+    
+    @State private var selectedCourse: CourseModel? = nil
     
     var body: some View {
         ZStack {
@@ -56,8 +58,10 @@ struct HomeView: View {
         .statusBar(hidden: !isShowStatusBar)
         .onChange(of: isFullScreen) { newValue in
             withAnimation(.closeCard) { isShowStatusBar = !newValue }
+            if !newValue {
+                selectedCourse = nil
+            }
         }
-        
         
         .onAppear {
             print("Appear HomeView")
@@ -110,21 +114,20 @@ struct HomeView: View {
             CourseItem(course, namespace)
                 .opacity(isFullScreen ? 0 : 1)
                 .onTapGesture {
+                    selectedCourse = course
                     withAnimation(.openCard) { isFullScreen.toggle() }
             }
         }
     }
     
     @ViewBuilder private var courseView: some View {
-        if isFullScreen {
-            ForEach(courseViewModel.courses) { course in
-                CourseView(course, namespace, $isFullScreen)
-                    .zIndex(1)
-                    .transition(
-                        .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
-                                    removal: .opacity.animation(.easeOut.delay(0.2)))
+        if let selectedCourse = selectedCourse, isFullScreen {
+            CourseView(selectedCourse, namespace, $isFullScreen)
+                .zIndex(1)
+                .transition(
+                    .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
+                                removal: .opacity.animation(.easeOut.delay(0.2)))
                 )
-            }
         }
     }
 }
@@ -134,6 +137,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
     }
 }
