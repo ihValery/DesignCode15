@@ -117,7 +117,7 @@ struct HomeView: View {
     
     @ViewBuilder private var courseView: some View {
         if isFullScreen {
-            CourseView(namespace, $isFullScreen)
+            CourseView(courseViewModel.courses[0], namespace, $isFullScreen)
                 .zIndex(1)
                 .transition(
                     .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),

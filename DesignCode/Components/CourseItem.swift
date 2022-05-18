@@ -29,7 +29,7 @@ struct CourseItem: View {
     
     private var headerCard: some View {
         VStack(alignment: .leading, spacing: 10) {
-            DefaultText(course.title, font: .largeTitle, weight: .bold)
+            DefaultText(course.title, font: .title, weight: .bold)
                 .matchedGeometryEffect(id: NSpaceCourseID.title, in: namespace)
 
             DefaultText(course.subtitle, font: .footnote, weight: .semibold)
@@ -54,22 +54,21 @@ struct CourseItem: View {
     }
     
     private var imageLogoCourse: some View {
-        GlobalConstant.Images.illustration9
+        course.image
             .resizable()
             .scaledToFit()
             .matchedGeometryEffect(id: NSpaceCourseID.image, in: namespace)
     }
     
     private var imageBackground: some View {
-        GlobalConstant.Images.background5
+        course.background
             .resizable()
             .scaledToFill()
             .matchedGeometryEffect(id: NSpaceCourseID.background, in: namespace)
     }
     
     private var cardForm: some View {
-        RoundedRectangle(cornerRadius: GlobalConstant.Corner.card,
-                         style: .continuous)
+        RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
         .matchedGeometryEffect(id: NSpaceCourseID.mask, in: namespace)
     }
     
