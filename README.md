@@ -2,6 +2,8 @@
 
 <img src="https://github.com/ihValery/DesignCode15/blob/main/Image/headerPreView.png?raw=true"></a>
 
+- Баг анимации при переключении через class
+
 - Закругления в стиле iOS
     - .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
     - mask на подобии корнерРадиус но + можно и дальше модифицировать (.opacity)
