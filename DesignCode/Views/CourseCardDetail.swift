@@ -21,6 +21,8 @@ struct CourseCardDetail: View {
     
     private var namespace: Namespace.ID
     
+    @State private var gesture: CGSize = .zero
+    
     @Binding var isFullScreen: Bool
     
     var body: some View {
@@ -31,10 +33,29 @@ struct CourseCardDetail: View {
                 content
             }
             .background(Color.backgroundDefault)
+            .mask(RoundedRectangle(cornerRadius: gesture.width / 3, style: .continuous))
+            .scaleEffect(1 + gesture.width / -500)
+            .shadow(color: .black.opacity(0.4), radius: 30, x: 0, y: 10)
+            .background(.black.opacity(Double(gesture.width / 300)))
+            .background(.ultraThinMaterial)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        guard value.translation.width > 0 else { return }
+                        
+                        gesture = value.translation
+                    }
+                    .onEnded { _ in
+                        withAnimation(.closeCard) {
+                            gesture = .zero
+                        }
+                    }
+            )
+            .ignoresSafeArea()
             
             closeButton
+                .opacity(gesture.width > 0 ? 0 : 1)
         }
-        .ignoresSafeArea()
         
         .onAppear {
             appearAnimation()
@@ -131,6 +152,7 @@ struct CourseCardDetail: View {
         }
         .padding(GlobalConstant.Padding.stepDefault)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+        .ignoresSafeArea()
     }
     
     private var content: some View {
