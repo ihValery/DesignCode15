@@ -73,8 +73,8 @@ struct FeaturedCourse: View {
 //MARK: - PreviewProvider
 
 struct FeaturedItem_Previews: PreviewProvider {
-    static let item0 = CourseVM().featuredItems[0]
-    static let item2 = CourseVM().featuredItems[2]
+    static let item0 = CourseVM().courses[1]
+    static let item2 = CourseVM().courses[2]
     
     static var previews: some View {
         Group {

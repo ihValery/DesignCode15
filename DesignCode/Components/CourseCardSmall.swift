@@ -1,5 +1,5 @@
 //
-//  CourseItem.swift
+//  CourseCardSmall.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 16.05.22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//MARK: - CourseItem
+//MARK: - CourseCardSmall
 
-struct CourseItem: View {
+struct CourseCardSmall: View {
     
     //MARK: Properties
     
@@ -83,11 +83,26 @@ struct CourseItem: View {
 
 //MARK: - PreviewProvider
 
-struct CoursesItem_Previews: PreviewProvider {
+struct CourseCardSmall_Previews: PreviewProvider {
     @Namespace static var namespace
-    static let course = CourseVM().courses[0]
+    static let course = CourseVM().courses[1]
     
     static var previews: some View {
-        CourseItem(course, namespace)
+        Group {
+            CourseCardSmall(course, namespace)
+            CourseCardSmallPlug()
+        }
+        .previewLayout(.sizeThatFits)
+    }
+}
+
+//MARK: - CourseCardSmall
+
+struct CourseCardSmallPlug: View {
+    var body: some View {
+        Color.clear
+            .frame(height: GlobalConstant.Size.homeCard.height - 50)
+            .padding(.horizontal, GlobalConstant.Padding.stepDefault)
+            .padding(.vertical)
     }
 }

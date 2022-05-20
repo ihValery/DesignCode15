@@ -18,11 +18,13 @@ struct HomeView: View {
     
     //MARK: Properties
     
-    @ObservedObject private var courseViewModel = CourseVM()
+    @EnvironmentObject private var courseViewModel: CourseVM
+    
+    @EnvironmentObject private var controlPanel: ControlPanelApp
     
     @Namespace private var namespace
     
-    @State private var hasScroll = false
+    @State private var isSmallScroll = false
     
     @State private var isFullScreen = false
     
@@ -49,7 +51,7 @@ struct HomeView: View {
                 Color.clear.frame(height: 70)
             }
             .overlay(
-                NavigationBar(GlobalConstant.NavigationBar.title, $hasScroll),
+                NavigationBar(GlobalConstant.NavigationBar.title, $isSmallScroll),
                 alignment: .top
             )
             
@@ -80,17 +82,17 @@ struct HomeView: View {
         .frame(height: 0)
         .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
             withAnimation(.easeInOut(duration: 0.2)) {
-                hasScroll = value < 0 ? true : false
+                isSmallScroll = value < 0 ? true : false
             }
         })
     }
     
-    private var featuredCourses: some View {
+    var featuredCourses: some View {
         TabView {
             ForEach(courseViewModel.featuredItems) { course in
                 GeometryReader { geometry in
                     FeaturedCourse(course, geometryMinX: geometry.frame(in: .global).minX)
-                        .padding(.vertical, 20)
+                        .padding(.top, 20)
                 }
             }
         }
@@ -109,25 +111,36 @@ struct HomeView: View {
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
     }
     
-    private var courseItem: some View {
-        ForEach(courseViewModel.courses) { course in
-            CourseItem(course, namespace)
-                .opacity(isFullScreen ? 0 : 1)
-                .onTapGesture {
-                    selectedCourse = course
-                    withAnimation(.openCard) { isFullScreen.toggle() }
+    @ViewBuilder private var courseItem: some View {
+        if !isFullScreen {
+            ForEach(courseViewModel.courses) { course in
+                CourseCardSmall(course, namespace)
+                    .opacity(isFullScreen ? 0 : 1)
+                    .onTapGesture {
+                        withAnimation(.openCard) {
+                            isFullScreen.toggle()
+                            controlPanel.isShowDetailCard.toggle()
+                            isShowStatusBar = false
+                            selectedCourse = course
+                        }
+                    }
+            }
+        } else {
+            ForEach(courseViewModel.courses) { _ in
+                CourseCardSmallPlug()
             }
         }
     }
     
     @ViewBuilder private var courseView: some View {
         if let selectedCourse = selectedCourse, isFullScreen {
-            CourseView(selectedCourse, namespace, $isFullScreen)
+            CourseCardDetail(selectedCourse, namespace, $isFullScreen)
                 .zIndex(1)
                 .transition(
                     .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
                                 removal: .opacity.animation(.easeOut.delay(0.2)))
                 )
+                .opacity(0.2)
         }
     }
 }
@@ -137,6 +150,8 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(ControlPanelApp())
+            .environmentObject(CourseVM())
 //            .preferredColorScheme(.dark)
     }
 }

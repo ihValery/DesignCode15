@@ -1,5 +1,5 @@
 //
-//  CourseView.swift
+//  CourseCardDetail.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 17.05.22.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-//MARK: - CourseView
+//MARK: - CourseCardDetail
 
-struct CourseView: View {
+struct CourseCardDetail: View {
     
     //MARK: Properties
     
@@ -152,6 +152,6 @@ struct CourseView_Previews: PreviewProvider {
     static let course = CourseVM().courses[1]
     
     static var previews: some View {
-        CourseView(course, namespace, .constant(false))
+        CourseCardDetail(course, namespace, .constant(false))
     }
 }
