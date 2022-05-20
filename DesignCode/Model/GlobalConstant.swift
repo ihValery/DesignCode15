@@ -14,12 +14,8 @@ struct GlobalConstant {
     struct Corner {
         ///30
         static let card: CGFloat = 30
-//        ///16
-//        static let logoBackground: CGFloat = 16
         ///14
         static let buttonMagnifyingglass: CGFloat = 14
-//        /16
-//        static let buttonAvatar: CGFloat = 16
         ///34
         static let tabBar: CGFloat = 34
         static let tabBarDash: CGFloat = 3
@@ -117,5 +113,9 @@ struct GlobalConstant {
     
     struct NavigationBar {
         static let title = "Featured"
+    }
+    
+    struct HomeView {
+        static let courses = "Courses".uppercased()
     }
 }

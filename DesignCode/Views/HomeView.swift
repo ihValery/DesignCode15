@@ -18,11 +18,13 @@ struct HomeView: View {
     
     //MARK: Properties
     
-    @ObservedObject private var courseViewModel = CourseVM()
+    @EnvironmentObject private var courseViewModel: CourseVM
+    
+    @EnvironmentObject private var controlPanel: ControlPanelApp
     
     @Namespace private var namespace
     
-    @State private var hasScroll = false
+    @State private var isSmallScroll = false
     
     @State private var isFullScreen = false
     
@@ -49,7 +51,7 @@ struct HomeView: View {
                 Color.clear.frame(height: 70)
             }
             .overlay(
-                NavigationBar(GlobalConstant.NavigationBar.title, $hasScroll),
+                NavigationBar(GlobalConstant.NavigationBar.title, $isSmallScroll),
                 alignment: .top
             )
             
@@ -57,10 +59,11 @@ struct HomeView: View {
         }
         .statusBar(hidden: !isShowStatusBar)
         .onChange(of: isFullScreen) { newValue in
-            withAnimation(.closeCard) { isShowStatusBar = !newValue }
-            if !newValue {
-                selectedCourse = nil
+            withAnimation(.closeCard) {
+                isShowStatusBar = !newValue
             }
+            
+            if !newValue { selectedCourse = nil }
         }
         
         .onAppear {
@@ -80,17 +83,17 @@ struct HomeView: View {
         .frame(height: 0)
         .onPreferenceChange(ScrollPreferenceKey.self, perform: { value in
             withAnimation(.easeInOut(duration: 0.2)) {
-                hasScroll = value < 0 ? true : false
+                isSmallScroll = value < 0 ? true : false
             }
         })
     }
     
-    private var featuredCourses: some View {
+    var featuredCourses: some View {
         TabView {
             ForEach(courseViewModel.featuredItems) { course in
                 GeometryReader { geometry in
                     FeaturedCourse(course, geometryMinX: geometry.frame(in: .global).minX)
-                        .padding(.vertical, 20)
+                        .padding(.top, 20)
                 }
             }
         }
@@ -103,7 +106,7 @@ struct HomeView: View {
     }
     
     private var headerCourse: some View {
-        DefaultText("Courses".uppercased(), font: .footnote, weight: .semibold)
+        DefaultText(GlobalConstant.HomeView.courses, font: .footnote, weight: .semibold)
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
@@ -111,18 +114,26 @@ struct HomeView: View {
     
     private var courseItem: some View {
         ForEach(courseViewModel.courses) { course in
-            CourseItem(course, namespace)
-                .opacity(isFullScreen ? 0 : 1)
-                .onTapGesture {
-                    selectedCourse = course
-                    withAnimation(.openCard) { isFullScreen.toggle() }
+            if isFullScreen {
+                CourseCardSmallPlug()
+            } else {
+                CourseCardSmall(course, namespace)
+                    .opacity(isFullScreen ? 0 : 1)
+                    .onTapGesture {
+                        withAnimation(.openCard) {
+                            isFullScreen.toggle()
+                            controlPanel.isShowDetailCard.toggle()
+                            isShowStatusBar = false
+                            selectedCourse = course
+                        }
+                    }
             }
         }
     }
     
     @ViewBuilder private var courseView: some View {
         if let selectedCourse = selectedCourse, isFullScreen {
-            CourseView(selectedCourse, namespace, $isFullScreen)
+            CourseCardDetail(selectedCourse, namespace, $isFullScreen)
                 .zIndex(1)
                 .transition(
                     .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
@@ -137,6 +148,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-//            .preferredColorScheme(.dark)
+            .environmentObject(ControlPanelApp())
+            .environmentObject(CourseVM())
     }
 }

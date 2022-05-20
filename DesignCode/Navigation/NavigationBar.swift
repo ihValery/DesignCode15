@@ -13,7 +13,7 @@ struct NavigationBar: View {
     
     //MARK: Properties
     
-    @Binding var hasScroll: Bool
+    @Binding var isSmallScroll: Bool
     
     private let title: String
     
@@ -22,12 +22,12 @@ struct NavigationBar: View {
             Color.clear
                 .background(.ultraThinMaterial)
                 .blur(radius: 10)
-                .opacity(hasScroll ? 1 : 0)
+                .opacity(isSmallScroll ? 1 : 0)
             
             HStack(spacing: 16) {
                 Text(title)
                     .bold()
-                    .animatableFont(hasScroll ? 22 : 34)
+                    .animatableFont(isSmallScroll ? 22 : 34)
                 
                 Spacer()
                 
@@ -36,16 +36,16 @@ struct NavigationBar: View {
                 AvatarButton(GlobalConstant.Avatar.avatarThree)
             }
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .padding(.bottom, hasScroll ? GlobalConstant.Padding.step6 : 0)
+            .padding(.bottom, isSmallScroll ? GlobalConstant.Padding.step6 : 0)
         }
-        .frame(height: hasScroll ? 44 : GlobalConstant.Size.navigationBar.height)
+        .frame(height: isSmallScroll ? 44 : GlobalConstant.Size.navigationBar.height)
     }
     
     //MARK: Initializer
     
-    init(_ title: String,_ hasScroll: Binding<Bool>) {
+    init(_ title: String,_ isSmallScroll: Binding<Bool>) {
         self.title = title
-        self._hasScroll = hasScroll
+        self._isSmallScroll = isSmallScroll
     }
 }
 

@@ -12,13 +12,12 @@
 		80124C89282ED8900014D56A /* AnimatableFontModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C88282ED8900014D56A /* AnimatableFontModifier.swift */; };
 		80124C8B282EDF6C0014D56A /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8A282EDF6C0014D56A /* CourseModel.swift */; };
 		80124C8D282EE86F0014D56A /* CourseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8C282EE86F0014D56A /* CourseVM.swift */; };
-		80124C8F282FAA940014D56A /* MatchedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C8E282FAA940014D56A /* MatchedView.swift */; };
 		80124C9128301F310014D56A /* LogoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C9028301F310014D56A /* LogoButton.swift */; };
 		80124C93283027500014D56A /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80124C92283027500014D56A /* SearchButton.swift */; };
 		802A3F46282E84D40028B7D7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802A3F45282E84D40028B7D7 /* HomeView.swift */; };
 		8039896A28303E420067B1B1 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039896928303E420067B1B1 /* CloseButton.swift */; };
 		8039896C283052980067B1B1 /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8039896B283052980067B1B1 /* AvatarButton.swift */; };
-		8049273A2832F9FE009FE301 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804927392832F9FE009FE301 /* CourseView.swift */; };
+		8049273A2832F9FE009FE301 /* CourseCardDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804927392832F9FE009FE301 /* CourseCardDetail.swift */; };
 		806405C5282EA44300CEB982 /* FeaturedCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C4282EA44300CEB982 /* FeaturedCourse.swift */; };
 		806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806405C6282EA80F00CEB982 /* NavigationBar.swift */; };
 		80641F6D28203AC300F4CB24 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80641F6C28203AC300F4CB24 /* Color.swift */; };
@@ -29,13 +28,14 @@
 		80892C6C2822A3CF00204DC4 /* TabBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892C6B2822A3CF00204DC4 /* TabBarVM.swift */; };
 		80892C6F2822A62C00204DC4 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892C6E2822A62C00204DC4 /* TabBarView.swift */; };
 		80892C712822C5D400204DC4 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80892C702822C5D400204DC4 /* View.swift */; };
+		80A4A3652837A2220012CA82 /* ControlPanelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A4A3642837A2220012CA82 /* ControlPanelApp.swift */; };
 		80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B198452820222400CA57EA /* DesignCodeApp.swift */; };
 		80B198482820222400CA57EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B198472820222400CA57EA /* ContentView.swift */; };
 		80B1984A2820222500CA57EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B198492820222500CA57EA /* Assets.xcassets */; };
 		80B1984D2820222500CA57EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B1984C2820222500CA57EA /* Preview Assets.xcassets */; };
 		80B5E0BD28203E61000B381D /* GlobalConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E0BC28203E61000B381D /* GlobalConstant.swift */; };
 		80B5E0BF28204255000B381D /* DefaultText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B5E0BE28204255000B381D /* DefaultText.swift */; };
-		80BD247628326C930076C8BE /* CourseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BD247528326C930076C8BE /* CourseItem.swift */; };
+		80BD247628326C930076C8BE /* CourseCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BD247528326C930076C8BE /* CourseCardSmall.swift */; };
 		80BD247A283280170076C8BE /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BD2479283280170076C8BE /* Animation.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,13 +45,12 @@
 		80124C88282ED8900014D56A /* AnimatableFontModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatableFontModifier.swift; sourceTree = "<group>"; };
 		80124C8A282EDF6C0014D56A /* CourseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		80124C8C282EE86F0014D56A /* CourseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseVM.swift; sourceTree = "<group>"; };
-		80124C8E282FAA940014D56A /* MatchedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedView.swift; sourceTree = "<group>"; };
 		80124C9028301F310014D56A /* LogoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoButton.swift; sourceTree = "<group>"; };
 		80124C92283027500014D56A /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		802A3F45282E84D40028B7D7 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8039896928303E420067B1B1 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		8039896B283052980067B1B1 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
-		804927392832F9FE009FE301 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		804927392832F9FE009FE301 /* CourseCardDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardDetail.swift; sourceTree = "<group>"; };
 		806405C4282EA44300CEB982 /* FeaturedCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCourse.swift; sourceTree = "<group>"; };
 		806405C6282EA80F00CEB982 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		80641F6C28203AC300F4CB24 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		80892C6B2822A3CF00204DC4 /* TabBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVM.swift; sourceTree = "<group>"; };
 		80892C6E2822A62C00204DC4 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		80892C702822C5D400204DC4 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		80A4A3642837A2220012CA82 /* ControlPanelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPanelApp.swift; sourceTree = "<group>"; };
 		80B198422820222400CA57EA /* Design Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Design Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B198452820222400CA57EA /* DesignCodeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeApp.swift; sourceTree = "<group>"; };
 		80B198472820222400CA57EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		80B1984C2820222500CA57EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80B5E0BC28203E61000B381D /* GlobalConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstant.swift; sourceTree = "<group>"; };
 		80B5E0BE28204255000B381D /* DefaultText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultText.swift; sourceTree = "<group>"; };
-		80BD247528326C930076C8BE /* CourseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItem.swift; sourceTree = "<group>"; };
+		80BD247528326C930076C8BE /* CourseCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCardSmall.swift; sourceTree = "<group>"; };
 		80BD2479283280170076C8BE /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +127,7 @@
 		80892C6A2822A3B400204DC4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				80A4A3642837A2220012CA82 /* ControlPanelApp.swift */,
 				80892C6B2822A3CF00204DC4 /* TabBarVM.swift */,
 				80124C8C282EE86F0014D56A /* CourseVM.swift */,
 			);
@@ -138,9 +139,8 @@
 			children = (
 				802A3F45282E84D40028B7D7 /* HomeView.swift */,
 				80892C6128214E6E00204DC4 /* AccountView.swift */,
-				80124C8E282FAA940014D56A /* MatchedView.swift */,
 				806405C4282EA44300CEB982 /* FeaturedCourse.swift */,
-				804927392832F9FE009FE301 /* CourseView.swift */,
+				804927392832F9FE009FE301 /* CourseCardDetail.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 				8039896B283052980067B1B1 /* AvatarButton.swift */,
 				80124C92283027500014D56A /* SearchButton.swift */,
 				8039896928303E420067B1B1 /* CloseButton.swift */,
-				80BD247528326C930076C8BE /* CourseItem.swift */,
+				80BD247528326C930076C8BE /* CourseCardSmall.swift */,
 				806B2C4428355D8E008E758B /* ContentText.swift */,
 			);
 			path = Components;
@@ -279,11 +279,11 @@
 				80124C87282EC7400014D56A /* PreferenceKeys.swift in Sources */,
 				806405C5282EA44300CEB982 /* FeaturedCourse.swift in Sources */,
 				80BD247A283280170076C8BE /* Animation.swift in Sources */,
-				80BD247628326C930076C8BE /* CourseItem.swift in Sources */,
+				80BD247628326C930076C8BE /* CourseCardSmall.swift in Sources */,
 				80124C93283027500014D56A /* SearchButton.swift in Sources */,
 				806405C7282EA80F00CEB982 /* NavigationBar.swift in Sources */,
 				80B198462820222400CA57EA /* DesignCodeApp.swift in Sources */,
-				80124C8F282FAA940014D56A /* MatchedView.swift in Sources */,
+				80A4A3652837A2220012CA82 /* ControlPanelApp.swift in Sources */,
 				8039896A28303E420067B1B1 /* CloseButton.swift in Sources */,
 				80124C89282ED8900014D56A /* AnimatableFontModifier.swift in Sources */,
 				80892C6C2822A3CF00204DC4 /* TabBarVM.swift in Sources */,
@@ -291,7 +291,7 @@
 				80892C6228214E6E00204DC4 /* AccountView.swift in Sources */,
 				8039896C283052980067B1B1 /* AvatarButton.swift in Sources */,
 				80641F6D28203AC300F4CB24 /* Color.swift in Sources */,
-				8049273A2832F9FE009FE301 /* CourseView.swift in Sources */,
+				8049273A2832F9FE009FE301 /* CourseCardDetail.swift in Sources */,
 				80B5E0BF28204255000B381D /* DefaultText.swift in Sources */,
 				80124C8D282EE86F0014D56A /* CourseVM.swift in Sources */,
 				80892C6F2822A62C00204DC4 /* TabBarView.swift in Sources */,

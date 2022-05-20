@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @AppStorage("selectTab") var selectTab: TabBarModel = .home
     
+    @EnvironmentObject var controlPanel: ControlPanelApp
+    
     var body: some View {
         ZStack {
             switch selectTab {
@@ -29,10 +31,12 @@ struct ContentView: View {
                 Color.purple
                     .ignoresSafeArea()
             }
+            
+            TabBarView($selectTab)
+                .offset(y: controlPanel.isShowDetailCard ? 200 : 0)
         }
-        .overlay(TabBarView($selectTab), alignment: .bottom)
         .safeAreaInset(edge: .bottom) {
-            Color.clear.frame(height: GlobalConstant.Size.tabBar.height / 2)
+            Color.clear.frame(height: 55)
         }
     }
 }
@@ -42,5 +46,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ControlPanelApp())
+            .environmentObject(CourseVM())
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CourseView.swift
+//  CourseCardDetail.swift
 //  DesignCode
 //
 //  Created by Валерий Игнатьев on 17.05.22.
@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-//MARK: - CourseView
+//MARK: - CourseCardDetail
 
-struct CourseView: View {
+struct CourseCardDetail: View {
     
     //MARK: Properties
+    
+    @EnvironmentObject private var controlPanel: ControlPanelApp
     
     @State private var animationSplit: [Bool] = [false, false]
     
@@ -29,13 +31,10 @@ struct CourseView: View {
                 content
             }
             .background(Color.backgroundDefault)
-            .safeAreaInset(edge: .bottom) {
-                Color.clear.frame(height: GlobalConstant.Size.tabBar.height)
-            }
-            .ignoresSafeArea()
             
             closeButton
         }
+        .ignoresSafeArea()
         
         .onAppear {
             appearAnimation()
@@ -46,13 +45,28 @@ struct CourseView: View {
     }
     
     private var cover: some View {
-        VStack { }
-        .frame(maxWidth: .infinity)
+        GeometryReader { grProxy in
+            let minY = grProxy.frame(in: .global).minY
+            let isDown = minY > 0
+            
+            imageLogoCourse
+                .offset(y: isDown ? 0 : minY / -1.7)
+                .frame(maxWidth: .infinity)
+                .frame(height: GlobalConstant.Size.homeCardIsFullScreen.height + (isDown ? minY : 0))
+                .background(
+                    imageBackground
+                        .blur(radius: minY / 10)
+                        .scaleEffect(isDown ? 1 + minY / 500 : 1)
+                        .offset(y: isDown ? 0 : minY / -1.3)
+                )
+                .mask(cardForm)
+                .overlay(
+                    headerCard
+                        .offset(y: isDown ? minY / 2 : 0)
+                )
+                .offset(y: isDown ? -minY : 0)
+        }
         .frame(height: GlobalConstant.Size.homeCardIsFullScreen.height)
-        .background(imageLogoCourse)
-        .background(imageBackground)
-        .mask(cardForm)
-        .overlay(headerCard)
     }
     
     private var headerCard: some View {
@@ -105,21 +119,24 @@ struct CourseView: View {
     
     private var cardForm: some View {
         RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
-        .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+            .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
     }
     
     private var closeButton: some View {
         CloseButton() {
-            withAnimation(.closeCard) { isFullScreen.toggle() }
+            withAnimation(.closeCard) {
+                isFullScreen.toggle()
+                controlPanel.isShowDetailCard.toggle()
+            }
         }
-        .padding(.trailing, GlobalConstant.Padding.stepDefault)
+        .padding(GlobalConstant.Padding.stepDefault)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
     }
     
     private var content: some View {
         ContentText()
             .offset(y: 130)
-            .padding(.bottom, 130)
+            .padding(.bottom, 160)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
             .opacity(animationSplit[1] ? 1 : 0)
     }
@@ -149,9 +166,10 @@ struct CourseView: View {
 
 struct CourseView_Previews: PreviewProvider {
     @Namespace static var namespace
-    static let course = CourseVM().courses[1]
+    static let course = CourseVM().featuredItems[0]
     
     static var previews: some View {
-        CourseView(course, namespace, .constant(false))
+        CourseCardDetail(course, namespace, .constant(false))
+            .environmentObject(ControlPanelApp())
     }
 }
