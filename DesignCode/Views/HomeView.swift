@@ -59,10 +59,11 @@ struct HomeView: View {
         }
         .statusBar(hidden: !isShowStatusBar)
         .onChange(of: isFullScreen) { newValue in
-            withAnimation(.closeCard) { isShowStatusBar = !newValue }
-            if !newValue {
-                selectedCourse = nil
+            withAnimation(.closeCard) {
+                isShowStatusBar = !newValue
             }
+            
+            if !newValue { selectedCourse = nil }
         }
         
         .onAppear {
@@ -112,8 +113,10 @@ struct HomeView: View {
     }
     
     @ViewBuilder private var courseItem: some View {
-        if !isFullScreen {
-            ForEach(courseViewModel.courses) { course in
+        ForEach(courseViewModel.courses) { course in
+            if isFullScreen {
+                CourseCardSmallPlug()
+            } else {
                 CourseCardSmall(course, namespace)
                     .opacity(isFullScreen ? 0 : 1)
                     .onTapGesture {
@@ -124,10 +127,6 @@ struct HomeView: View {
                             selectedCourse = course
                         }
                     }
-            }
-        } else {
-            ForEach(courseViewModel.courses) { _ in
-                CourseCardSmallPlug()
             }
         }
     }
@@ -140,7 +139,6 @@ struct HomeView: View {
                     .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
                                 removal: .opacity.animation(.easeOut.delay(0.2)))
                 )
-                .opacity(0.2)
         }
     }
 }
@@ -152,6 +150,5 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
             .environmentObject(ControlPanelApp())
             .environmentObject(CourseVM())
-//            .preferredColorScheme(.dark)
     }
 }

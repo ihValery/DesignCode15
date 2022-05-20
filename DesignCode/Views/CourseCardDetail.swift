@@ -13,6 +13,8 @@ struct CourseCardDetail: View {
     
     //MARK: Properties
     
+    @EnvironmentObject private var controlPanel: ControlPanelApp
+    
     @State private var animationSplit: [Bool] = [false, false]
     
     private let course: CourseModel
@@ -29,13 +31,10 @@ struct CourseCardDetail: View {
                 content
             }
             .background(Color.backgroundDefault)
-            .safeAreaInset(edge: .bottom) {
-                Color.clear.frame(height: GlobalConstant.Size.tabBar.height)
-            }
-            .ignoresSafeArea()
             
             closeButton
         }
+        .ignoresSafeArea()
         
         .onAppear {
             appearAnimation()
@@ -110,16 +109,19 @@ struct CourseCardDetail: View {
     
     private var closeButton: some View {
         CloseButton() {
-            withAnimation(.closeCard) { isFullScreen.toggle() }
+            withAnimation(.closeCard) {
+                isFullScreen.toggle()
+                controlPanel.isShowDetailCard.toggle()
+            }
         }
-        .padding(.trailing, GlobalConstant.Padding.stepDefault)
+        .padding(GlobalConstant.Padding.stepDefault)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
     }
     
     private var content: some View {
         ContentText()
             .offset(y: 130)
-            .padding(.bottom, 130)
+            .padding(.bottom, 160)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
             .opacity(animationSplit[1] ? 1 : 0)
     }
@@ -153,5 +155,6 @@ struct CourseView_Previews: PreviewProvider {
     
     static var previews: some View {
         CourseCardDetail(course, namespace, .constant(false))
+            .environmentObject(ControlPanelApp())
     }
 }
