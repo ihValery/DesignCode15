@@ -106,13 +106,13 @@ struct HomeView: View {
     }
     
     private var headerCourse: some View {
-        DefaultText("Courses".uppercased(), font: .footnote, weight: .semibold)
+        DefaultText(GlobalConstant.HomeView.courses, font: .footnote, weight: .semibold)
             .foregroundColor(.secondary)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, GlobalConstant.Padding.stepDefault)
     }
     
-    @ViewBuilder private var courseItem: some View {
+    private var courseItem: some View {
         ForEach(courseViewModel.courses) { course in
             if isFullScreen {
                 CourseCardSmallPlug()

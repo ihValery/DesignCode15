@@ -45,13 +45,28 @@ struct CourseCardDetail: View {
     }
     
     private var cover: some View {
-        VStack { }
-        .frame(maxWidth: .infinity)
+        GeometryReader { grProxy in
+            let minY = grProxy.frame(in: .global).minY
+            let isDown = minY > 0
+            
+            imageLogoCourse
+                .offset(y: isDown ? 0 : minY / -1.7)
+                .frame(maxWidth: .infinity)
+                .frame(height: GlobalConstant.Size.homeCardIsFullScreen.height + (isDown ? minY : 0))
+                .background(
+                    imageBackground
+                        .blur(radius: minY / 10)
+                        .scaleEffect(isDown ? 1 + minY / 500 : 1)
+                        .offset(y: isDown ? 0 : minY / -1.3)
+                )
+                .mask(cardForm)
+                .overlay(
+                    headerCard
+                        .offset(y: isDown ? minY / 2 : 0)
+                )
+                .offset(y: isDown ? -minY : 0)
+        }
         .frame(height: GlobalConstant.Size.homeCardIsFullScreen.height)
-        .background(imageLogoCourse)
-        .background(imageBackground)
-        .mask(cardForm)
-        .overlay(headerCard)
     }
     
     private var headerCard: some View {
@@ -104,7 +119,7 @@ struct CourseCardDetail: View {
     
     private var cardForm: some View {
         RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
-        .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
+            .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
     }
     
     private var closeButton: some View {
@@ -151,7 +166,7 @@ struct CourseCardDetail: View {
 
 struct CourseView_Previews: PreviewProvider {
     @Namespace static var namespace
-    static let course = CourseVM().courses[1]
+    static let course = CourseVM().featuredItems[0]
     
     static var previews: some View {
         CourseCardDetail(course, namespace, .constant(false))

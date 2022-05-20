@@ -114,4 +114,8 @@ struct GlobalConstant {
     struct NavigationBar {
         static let title = "Featured"
     }
+    
+    struct HomeView {
+        static let courses = "Courses".uppercased()
+    }
 }
