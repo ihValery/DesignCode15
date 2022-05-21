@@ -17,16 +17,18 @@ struct CourseCardDetail: View {
     
     @State private var animationSplit: [Bool] = [false, false]
     
+    @State private var gesture: CGSize = .zero
+    
+    @State private var isDragable: Bool = true
+    
     private let course: CourseModel
     
     private var namespace: Namespace.ID
     
-    @State private var gesture: CGSize = .zero
-    
     @Binding var isFullScreen: Bool
     
     var body: some View {
-        ZStack {
+        ZStack {            
             ScrollView(.vertical, showsIndicators: true) {
                 cover
                 
@@ -38,19 +40,7 @@ struct CourseCardDetail: View {
             .shadow(color: .black.opacity(0.4), radius: 30, x: 0, y: 10)
             .background(.black.opacity(Double(gesture.width / 300)))
             .background(.ultraThinMaterial)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        guard value.translation.width > 0 else { return }
-                        
-                        gesture = value.translation
-                    }
-                    .onEnded { _ in
-                        withAnimation(.closeCard) {
-                            gesture = .zero
-                        }
-                    }
-            )
+            .gesture(isDragable ? dragGestures : nil)
             .ignoresSafeArea()
             
             closeButton
@@ -163,6 +153,32 @@ struct CourseCardDetail: View {
             .opacity(animationSplit[1] ? 1 : 0)
     }
     
+    private var dragGestures: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                guard value.translation.width > 0 else { return }
+                
+                if value.startLocation.x < 10 {
+                    withAnimation(.closeCard) {
+                        gesture = value.translation
+                    }
+                }
+                
+                if value.translation.width > 100 {
+                    closeCard()
+                }
+            }
+            .onEnded { value in
+                if value.translation.width > 80 {
+                    closeCard()
+                } else {
+                    withAnimation(.closeCard) {
+                        gesture = .zero
+                    }
+                }
+            }
+    }
+    
     //MARK: Initializer
     
     init(_ course: CourseModel,_ namespace: Namespace.ID,_ isFullScreen: Binding<Bool>) {
@@ -181,6 +197,18 @@ struct CourseCardDetail: View {
     private func disappearAnimation() {
         animationSplit[0] = false
         animationSplit[1] = false
+    }
+    
+    private func closeCard() {
+        withAnimation(.closeCard) {
+            isFullScreen.toggle()
+            controlPanel.isShowDetailCard.toggle()
+        }
+        withAnimation(.closeCard) {
+            gesture = .zero
+        }
+        
+        isDragable = false
     }
 }
 
