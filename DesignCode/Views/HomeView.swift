@@ -135,10 +135,7 @@ struct HomeView: View {
         if let selectedCourse = selectedCourse, isFullScreen {
             CourseCardDetail(selectedCourse, namespace, $isFullScreen)
                 .zIndex(1)
-                .transition(
-                    .asymmetric(insertion: .opacity.animation(.linear(duration: 0.1)),
-                                removal: .opacity.animation(.easeOut.delay(0.2)))
-                )
+ 
         }
     }
 }
