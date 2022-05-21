@@ -28,12 +28,7 @@ struct CourseCardDetail: View {
     @Binding var isFullScreen: Bool
     
     var body: some View {
-        ZStack {
-            Color.green
-                .frame(width: 100, height: 200)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .zIndex(1)
-            
+        ZStack {            
             ScrollView(.vertical, showsIndicators: true) {
                 cover
                 
