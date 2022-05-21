@@ -35,7 +35,7 @@ struct ContentView: View {
             TabBarView($selectTab)
                 .offset(y: controlPanel.isShowDetailCard ? 200 : 0)
         }
-        .safeAreaInset(edge: .bottom) {
+        .safeAreaInset(edge: .bottom, spacing: 0) {
             Color.clear.frame(height: 55)
         }
     }

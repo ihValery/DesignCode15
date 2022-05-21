@@ -19,7 +19,7 @@ struct CourseCardDetail: View {
     
     @State private var gesture: CGSize = .zero
     
-    @State private var isDragable: Bool = true
+    @State private var isDraggable: Bool = true
     
     private let course: CourseModel
     
@@ -40,7 +40,7 @@ struct CourseCardDetail: View {
             .shadow(color: .black.opacity(0.4), radius: 30, x: 0, y: 10)
             .background(.black.opacity(Double(gesture.width / 300)))
             .background(.ultraThinMaterial)
-            .gesture(isDragable ? dragGestures : nil)
+            .gesture(isDraggable ? dragGestures : nil)
             .ignoresSafeArea()
             
             closeButton
@@ -118,6 +118,8 @@ struct CourseCardDetail: View {
         course.image
             .resizable()
             .scaledToFit()
+            .padding(GlobalConstant.Padding.stepDefault)
+            .frame(maxWidth: 500)
             .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
     }
     
@@ -129,7 +131,7 @@ struct CourseCardDetail: View {
     }
     
     private var cardForm: some View {
-        RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous)
+        RoundedRectangle(cornerRadius: animationSplit[0] ? 0 : GlobalConstant.Corner.card, style: .continuous)
             .matchedGeometryEffect(id: "mask\(course.id)", in: namespace)
     }
     
@@ -208,7 +210,7 @@ struct CourseCardDetail: View {
             gesture = .zero
         }
         
-        isDragable = false
+        isDraggable = false
     }
 }
 
@@ -221,5 +223,6 @@ struct CourseView_Previews: PreviewProvider {
     static var previews: some View {
         CourseCardDetail(course, namespace, .constant(false))
             .environmentObject(ControlPanelApp())
+            .previewDevice("iPhone 13 Pro")
     }
 }

@@ -13,7 +13,7 @@ struct CourseCardSmall: View {
     
     //MARK: Properties
     
-    private let course: CourseModel
+private let course: CourseModel
     
     private var namespace: Namespace.ID
     
@@ -24,8 +24,6 @@ struct CourseCardSmall: View {
             .background(imageBackground)
             .mask(cardForm)
             .frame(height: GlobalConstant.Size.homeCard.height - 50)
-            .padding(.horizontal, GlobalConstant.Padding.stepDefault)
-            .padding(.vertical)
     }
     
     private var headerCard: some View {
@@ -57,8 +55,8 @@ struct CourseCardSmall: View {
         course.image
             .resizable()
             .scaledToFit()
+            .padding(GlobalConstant.Padding.stepDefault)
             .matchedGeometryEffect(id: "image\(course.id)", in: namespace)
-            .padding(.top, 5)
     }
     
     private var imageBackground: some View {
@@ -93,6 +91,7 @@ struct CourseCardSmall_Previews: PreviewProvider {
             CourseCardSmallPlug()
         }
         .previewLayout(.sizeThatFits)
+        .previewDevice("iPhone 13 Pro")
     }
 }
 
