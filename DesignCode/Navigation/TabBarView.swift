@@ -26,15 +26,15 @@ struct TabBarView: View {
             }
         }
         .padding(.horizontal, GlobalConstant.Padding.step8)
-        .frame(height: GlobalConstant.Size.tabBar.height)
+        .frame(height: getSafeArea().bottom > 20 ? GlobalConstant.Size.tabBar.height : 62)
         .background(.ultraThinMaterial)
         .background(AnimateMoveTab(selectTab, indicatorCircleTabBar))
         .overlay(AnimateMoveTab(selectTab, indicatorDashTabBar))
         .clipShape(
-            RoundedRectangle(cornerRadius: GlobalConstant.Corner.tabBar,
+            RoundedRectangle(cornerRadius: getSafeArea().bottom > 20 ? GlobalConstant.Corner.tabBar : 0,
                              style: .continuous)
         )
-        .defaultStroke(.rectangle, GlobalConstant.Corner.tabBar)
+        .defaultStroke(.rectangle, getSafeArea().bottom > 20 ? GlobalConstant.Corner.tabBar : 0)
         .frame(maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea()
     }
@@ -68,6 +68,7 @@ struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
         TabBarView(.constant(.home))
             .previewInterfaceOrientation(.portrait)
+            .previewDevice("iPhone 13 Pro")
     }
 }
 

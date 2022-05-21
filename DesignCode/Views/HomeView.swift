@@ -113,22 +113,25 @@ struct HomeView: View {
     }
     
     private var courseItem: some View {
-        ForEach(courseViewModel.courses) { course in
-            if isFullScreen {
-                CourseCardSmallPlug()
-            } else {
-                CourseCardSmall(course, namespace)
-                    .opacity(isFullScreen ? 0 : 1)
-                    .onTapGesture {
-                        withAnimation(.openCard) {
-                            isFullScreen.toggle()
-                            controlPanel.isShowDetailCard.toggle()
-                            isShowStatusBar = false
-                            selectedCourse = course
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 300), spacing: 20)], spacing: 20) {
+            ForEach(courseViewModel.courses) { course in
+                if isFullScreen {
+                    CourseCardSmallPlug()
+                } else {
+                    CourseCardSmall(course, namespace)
+                        .opacity(isFullScreen ? 0 : 1)
+                        .onTapGesture {
+                            withAnimation(.openCard) {
+                                isFullScreen.toggle()
+                                controlPanel.isShowDetailCard.toggle()
+                                isShowStatusBar = false
+                                selectedCourse = course
+                            }
                         }
-                    }
+                }
             }
         }
+        .padding(.horizontal, GlobalConstant.Padding.stepDefault)
     }
     
     @ViewBuilder private var courseView: some View {
@@ -147,5 +150,6 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
             .environmentObject(ControlPanelApp())
             .environmentObject(CourseVM())
+            .previewDevice("iPhone 13 Pro")
     }
 }

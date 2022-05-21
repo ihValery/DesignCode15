@@ -43,6 +43,7 @@ struct FeaturedCourse: View {
         .padding(GlobalConstant.Padding.stepDefault)
         .padding(.vertical, GlobalConstant.Padding.stepDefault)
         .frame(height: GlobalConstant.Size.homeCard.height)
+        .frame(maxWidth: 500)
         .background(.ultraThinMaterial)
         .mask(RoundedRectangle(cornerRadius: GlobalConstant.Corner.card, style: .continuous))
         .defaultStroke(.rectangle)
@@ -50,7 +51,8 @@ struct FeaturedCourse: View {
         .rotation3DEffect(.degrees(geometryMinX / -10), axis: (x: 0, y: 1, z: 0))
         .defaultShadow()
         .blur(radius: abs(geometryMinX / 40))
-        .overlay(createImage)        
+        .overlay(createImage)
+        .frame(maxWidth: .infinity, alignment: .center)
     }
     
     var createImage: some View {
@@ -85,6 +87,7 @@ struct FeaturedItem_Previews: PreviewProvider {
             FeaturedCourse(item2, geometryMinX: 0)
                 .previewLayout(.sizeThatFits)
         }
+        .previewDevice("iPhone 13 Pro")
         .padding(.vertical, 20)
     }
 }
