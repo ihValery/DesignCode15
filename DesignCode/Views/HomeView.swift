@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+//MARK: - HomeView
+
 struct HomeView: View {
     
     //MARK: Internal Constant
     
-    struct InternalConstant {
+    internal struct InternalConstant {
         static let coordinateSpace = "scroll"
         static let offsetBackgroundFeatureItem: CGSize = .init(width: 250, height: -100)
     }
